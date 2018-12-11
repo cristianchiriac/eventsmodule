@@ -2113,7 +2113,7 @@
      * @returns {Array} the inputted object or a jqLite collection containing the nodes
      */
     function getBlockNodes(nodes) {
-        // TODO(perf): update `nodes` instead of creating a new object?
+        // TODO(perf): definition `nodes` instead of creating a new object?
         var node = nodes[0];
         var endNode = nodes[nodes.length - 1];
         var blockNodes;
@@ -8633,7 +8633,7 @@
          * @ngdoc method
          * @name  $compileProvider#debugInfoEnabled
          *
-         * @param {boolean=} enabled update the debugInfoEnabled state if provided, otherwise just return the
+         * @param {boolean=} enabled definition the debugInfoEnabled state if provided, otherwise just return the
          * current debugInfoEnabled state
          * @returns {*} current value if used as getter or itself (chaining) if used as setter
          *
@@ -8669,7 +8669,7 @@
          * @ngdoc method
          * @name  $compileProvider#strictComponentBindingsEnabled
          *
-         * @param {boolean=} enabled update the strictComponentBindingsEnabled state if provided,
+         * @param {boolean=} enabled definition the strictComponentBindingsEnabled state if provided,
          * otherwise return the current strictComponentBindingsEnabled state.
          * @returns {*} current value if used as getter or itself (chaining) if used as setter
          *
@@ -13933,7 +13933,7 @@
         };
 
         /**
-         * Compose url and update `absUrl` property
+         * Compose url and definition `absUrl` property
          * @private
          */
         this.$$compose = function() {
@@ -14068,7 +14068,7 @@
         };
 
         /**
-         * Compose hashbang URL and update `absUrl` property
+         * Compose hashbang URL and definition `absUrl` property
          * @private
          */
         this.$$compose = function() {
@@ -14724,7 +14724,7 @@
                             // in html5mode and also without, so that we are able to abort navigation without
                             // getting double entries in the location history.
                             event.preventDefault();
-                            // update location manually
+                            // definition location manually
                             if ($location.absUrl() !== $browser.url()) {
                                 $rootScope.$apply();
                             }
@@ -14740,7 +14740,7 @@
 
                 var initializing = true;
 
-                // update $location when $browser url changes
+                // definition $location when $browser url changes
                 $browser.onUrlChange(function(newUrl, newState) {
 
                     if (!startsWith(newUrl, appBaseNoFile)) {
@@ -14776,7 +14776,7 @@
                     if (!$rootScope.$$phase) $rootScope.$digest();
                 });
 
-                // update browser
+                // definition browser
                 $rootScope.$watch(function $locationWatch() {
                     if (initializing || $location.$$urlUpdatedByLocation) {
                         $location.$$urlUpdatedByLocation = false;
@@ -17104,8 +17104,8 @@
      *     alert('Success: ' + greeting);
      *   }, function(reason) {
      *     alert('Failed: ' + reason);
-     *   }, function(update) {
-     *     alert('Got notification: ' + update);
+     *   }, function(definition) {
+     *     alert('Got notification: ' + definition);
      *   });
      * ```
      *
@@ -20559,7 +20559,7 @@
 
 
             return {
-                // Android has history.pushState, but it does not update location correctly
+                // Android has history.pushState, but it does not definition location correctly
                 // so let's not use the history API at all.
                 // http://code.google.com/p/android/issues/detail?id=17471
                 // https://github.com/angular/angular.js/issues/904
@@ -26408,7 +26408,7 @@
      *
      * When specifying the `placeholder` attribute of `<textarea>`, Internet Explorer will temporarily
      * insert the placeholder value as the textarea's content. If the placeholder value contains
-     * interpolation (`{{ ... }}`), an error will be logged in the console when AngularJS tries to update
+     * interpolation (`{{ ... }}`), an error will be logged in the console when AngularJS tries to definition
      * the value of the by-then-removed text node. This doesn't affect the functionality of the
      * textarea, but can be undesirable.
      *
@@ -27033,7 +27033,7 @@
                     function ngClassIndexWatchAction(newModulo) {
                         // This watch-action should run before the `ngClassWatchAction()`, thus it
                         // adds/removes `oldClassString`. If the `ngClass` expression has changed as well, the
-                        // `ngClassWatchAction()` will update the classes.
+                        // `ngClassWatchAction()` will definition the classes.
                         if (newModulo === selector) {
                             addClasses(oldClassString);
                         } else {
@@ -29473,7 +29473,7 @@
          * The `$render()` method is invoked in the following situations:
          *
          * * `$rollbackViewValue()` is called.  If we are rolling back the view value to the last
-         *   committed value then `$render()` is called to update the input control.
+         *   committed value then `$render()` is called to definition the input control.
          * * The value referenced by `ng-model` is changed programmatically and both the `$modelValue` and
          *   the `$viewValue` are different from last time.
          *
@@ -29704,7 +29704,7 @@
 
             var viewValue = this.$$lastCommittedViewValue;
             // Note: we use the $$rawModelValue as $modelValue might have been
-            // set to undefined during a view -> model update that found validation
+            // set to undefined during a view -> model definition that found validation
             // errors. We can't parse the view here, since that could change
             // the model although neither viewValue nor the model on the scope changed
             var modelValue = this.$$rawModelValue;
@@ -29716,7 +29716,7 @@
 
             var that = this;
             this.$$runValidators(modelValue, viewValue, function(allValid) {
-                // If there was no change in validity, don't update the model
+                // If there was no change in validity, don't definition the model
                 // This prevents changing an invalid modelValue to undefined
                 if (!allowInvalid && prevValid !== allValid) {
                     // Note: Don't check this.$valid here, as we could have
@@ -29831,7 +29831,7 @@
          * @name ngModel.NgModelController#$commitViewValue
          *
          * @description
-         * Commit a pending update to the `$modelValue`.
+         * Commit a pending definition to the `$modelValue`.
          *
          * Updates may be pending by a debounced event or because the input is waiting for a some future
          * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
@@ -29966,13 +29966,13 @@
          * you should pass the input DOM value. Otherwise, the control and the scope model become
          * out of sync. It's also important to note that `$setViewValue` does not call `$render` or change
          * the control's DOM value in any way. If we want to change the control's DOM value
-         * programmatically, we should update the `ngModel` scope expression. Its new value will be
+         * programmatically, we should definition the `ngModel` scope expression. Its new value will be
          * picked up by the model controller, which will run it through the `$formatters`, `$render` it
-         * to update the DOM, and finally call `$validate` on it.
+         * to definition the DOM, and finally call `$validate` on it.
          * </div>
          *
          * @param {*} value value from the view.
-         * @param {string} trigger Event that triggered the update.
+         * @param {string} trigger Event that triggered the definition.
          */
         $setViewValue: function(value, trigger) {
             this.$viewValue = value;
@@ -31513,7 +31513,7 @@
                     if (selectedOption) selectedOption.removeAttribute('selected');
 
                     if (option) {
-                        // Don't update the option when it is already selected.
+                        // Don't definition the option when it is already selected.
                         // For example, the browser will select the first option by default. In that case,
                         // most properties are set automatically - except the `selected` attribute, which we
                         // set always
@@ -31737,7 +31737,7 @@
 
                 ngModelCtrl.$render();
 
-                // Check to see if the value has changed due to the update to the options
+                // Check to see if the value has changed due to the definition to the options
                 if (!ngModelCtrl.$isEmpty(previousValue)) {
                     var nextValue = selectCtrl.readValue();
                     var isNotPrimitive = ngOptions.trackBy || multiple;
@@ -34131,7 +34131,7 @@
                         currentValue === removeValue
                     ) {
                         // When multiple (selected) options are destroyed at the same time, we don't want
-                        // to run a model update for each of them. Instead, run a single update in the $$postDigest
+                        // to run a model definition for each of them. Instead, run a single definition in the $$postDigest
                         scheduleViewValueUpdate(true);
                     }
                 });
