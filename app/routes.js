@@ -1,6 +1,6 @@
 
 eventsModule
-    .config(function ($stateProvider, $locationProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {
                 url: '/',
@@ -18,4 +18,5 @@ eventsModule
                 templateUrl: 'app/views/update/update.controller.html',
                 controller: 'updateController'
             })
+            $urlRouterProvider.otherwise('/');
     });
