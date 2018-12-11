@@ -1,3 +1,5 @@
 let eventsModule = angular
-  .module('eventsModule',[])
+  .module('eventsModule',[
+      'ui.router'
+  ])
 

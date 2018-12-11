@@ -81,7 +81,7 @@
         return curried(initial_args);
     }
     /**
-     * Given a varargs list of functions, returns a function that composes the argument functions, right-to-left
+     * Given a varargs eventslist of functions, returns a function that composes the argument functions, right-to-left
      * given: f(x), g(x), h(x)
      * let composed = compose(f,g,h)
      * then, composed is: f(g(h(x)))
@@ -97,7 +97,7 @@
         };
     }
     /**
-     * Given a varargs list of functions, returns a function that is composes the argument functions, left-to-right
+     * Given a varargs eventslist of functions, returns a function that is composes the argument functions, left-to-right
      * given: f(x), g(x), h(x)
      * let piped = pipe(f,g,h);
      * then, piped is: h(g(f(x)))
@@ -427,7 +427,7 @@
         var defaultVals = extend.apply(void 0, [{}].concat(defaultsList.reverse()));
         return extend(defaultVals, pick(opts || {}, Object.keys(defaultVals)));
     }
-    /** Reduce function that merges each element of the list into a single object, using extend */
+    /** Reduce function that merges each element of the eventslist into a single object, using extend */
     var mergeR = function (memo, item) { return extend(memo, item); };
     /**
      * Finds the common ancestor path between two states.
@@ -1685,9 +1685,9 @@
         /**
          * Finds [[Param]] objects which have different param values
          *
-         * Filters a list of [[Param]] objects to only those whose parameter values differ in two param value objects
+         * Filters a eventslist of [[Param]] objects to only those whose parameter values differ in two param value objects
          *
-         * @param params: The list of Param objects to filter
+         * @param params: The eventslist of Param objects to filter
          * @param values1: The first set of parameter values
          * @param values2: the second set of parameter values
          *
@@ -1701,7 +1701,7 @@
         /**
          * Checks if two param value objects are equal (for a set of [[Param]] objects)
          *
-         * @param params The list of [[Param]] objects to check
+         * @param params The eventslist of [[Param]] objects to check
          * @param values1 The first set of param values
          * @param values2 The second set of param values
          *
@@ -3014,7 +3014,7 @@
         /**
          * Gets the state's `Param` objects
          *
-         * Gets the list of [[Param]] objects owned by the state.
+         * Gets the eventslist of [[Param]] objects owned by the state.
          * If `opts.inherit` is true, it also includes the ancestor states' [[Param]] objects.
          * If `opts.matchingKeys` exists, returns only `Param`s whose `id` is a key on the `matchingKeys` object
          *
@@ -3230,7 +3230,7 @@
             this.get().forEach(function (state) { return _this.get(state) && _this.deregister(state); });
         };
         /**
-         * Listen for a State Registry events
+         * Listen for a State Registry eventslist
          *
          * Adds a callback that is invoked when states are registered or deregistered with the StateRegistry.
          *
@@ -3321,7 +3321,7 @@
          * If the state has children, they are are also removed from the registry.
          *
          * @param stateOrName the state's name or object representation
-         * @returns {StateObject[]} a list of removed states
+         * @returns {StateObject[]} a eventslist of removed states
          */
         StateRegistry.prototype.deregister = function (stateOrName) {
             var _state = this.get(stateOrName);
@@ -3379,7 +3379,7 @@
         /**
          * Chains together an array of TransitionHooks.
          *
-         * Given a list of [[TransitionHook]] objects, chains them together.
+         * Given a eventslist of [[TransitionHook]] objects, chains them together.
          * Each hook is invoked after the previous one completes.
          *
          * #### Example:
@@ -3390,7 +3390,7 @@
          * promise.then(handleSuccess, handleError);
          * ```
          *
-         * @param hooks the list of hooks to chain together
+         * @param hooks the eventslist of hooks to chain together
          * @param waitFor if provided, the chain is `.then()`'ed off this promise
          * @returns a `Promise` for sequentially invoking the hooks (in order)
          */
@@ -3405,7 +3405,7 @@
          * If any hook returns a promise, then the rest of the hooks are chained off that promise, and the promise is returned.
          * If no hook returns a promise, then all hooks are processed synchronously.
          *
-         * @param hooks the list of TransitionHooks to invoke
+         * @param hooks the eventslist of TransitionHooks to invoke
          * @param doneCallback a callback that is invoked after all the hooks have successfully completed
          *
          * @returns a promise for the async result, or the result of the callback
@@ -4223,7 +4223,7 @@
          *   (`'to'`, `'from'`, `'entering'`, `'exiting'`, `'retained'`)
          * @param state If provided, only returns the `ViewConfig`s for a single state in the path
          *
-         * @returns a list of ViewConfig objects for the given path.
+         * @returns a eventslist of ViewConfig objects for the given path.
          */
         Transition.prototype.views = function (pathname, state) {
             if (pathname === void 0) { pathname = 'entering'; }
@@ -4502,7 +4502,7 @@
      * Matches URLs against patterns and extracts named parameters from the path or the search
      * part of the URL.
      *
-     * A URL pattern consists of a path pattern, optionally followed by '?' and a list of search (query)
+     * A URL pattern consists of a path pattern, optionally followed by '?' and a eventslist of search (query)
      * parameters. Multiple search parameter names are separated by '&'. Search parameters
      * do not influence whether or not a URL is matched, but their values are passed through into
      * the matched parameters returned by [[UrlMatcher.exec]].
@@ -4941,7 +4941,7 @@
                 var encoded = param.type.encode(value);
                 return { param: param, value: value, isValid: isValid, isDefaultValue: isDefaultValue, squash: squash, encoded: encoded };
             }
-            // Build up the path-portion from the list of static segments and parameters
+            // Build up the path-portion from the eventslist of static segments and parameters
             var pathString = pathSegmentsAndParams.reduce(function (acc, x) {
                 // The element is a static segment (a raw string); just append it
                 if (isString(x))
@@ -5605,7 +5605,7 @@
             };
         };
         /**
-         * Returns the list of views currently available on the page, by fully-qualified name.
+         * Returns the eventslist of views currently available on the page, by fully-qualified name.
          *
          * @return {Array} Returns an array of fully-qualified view names.
          */
@@ -5613,7 +5613,7 @@
             return this._uiViews.map(prop('fqn'));
         };
         /**
-         * Returns the list of views on the page containing loaded content.
+         * Returns the eventslist of views on the page containing loaded content.
          *
          * @return {Array} Returns an array of fully-qualified view names.
          */
@@ -7739,7 +7739,7 @@
          * $state.includes("contacts"); // returns true
          * $state.includes("contacts.details"); // returns true
          * $state.includes("contacts.details.item"); // returns true
-         * $state.includes("contacts.list"); // returns false
+         * $state.includes("contacts.eventslist"); // returns false
          * $state.includes("about"); // returns false
          * ```
          *
@@ -8909,7 +8909,7 @@
          *
          * $stateProvider.state('home', {
          *   views: {
-         *     'contact.list': { controller: 'ListController' },
+         *     'contact.eventslist': { controller: 'ListController' },
          *     'contact.item': { controller: 'ItemController' }
          *   }
          * });
@@ -8917,7 +8917,7 @@
          *
          *
          * ```js
-         * // Auto-populates list and item views with /partials/home/contact/list.html,
+         * // Auto-populates eventslist and item views with /partials/home/contact/eventslist.html,
          * // and /partials/home/contact/item.html, respectively.
          * $state.go('home');
          * ```
@@ -9565,7 +9565,7 @@
      * The content inside the parentheses is an expression, evaluated to the parameter values.
      *
      * #### Example:
-     * This example renders a list of links to users.
+     * This example renders a eventslist of links to users.
      * The state's `userId` parameter value comes from each user's `user.id` property.
      * ```html
      * <li ng-repeat="user in users">
@@ -9587,12 +9587,12 @@
      *
      * ### Other DOM Events
      *
-     * You can also customize which DOM events to respond to (instead of `click`) by
-     * providing an `events` array in the `ui-sref-opts` attribute.
+     * You can also customize which DOM eventslist to respond to (instead of `click`) by
+     * providing an `eventslist` array in the `ui-sref-opts` attribute.
      *
      * #### Example:
      * ```html
-     * <input type="text" ui-sref="contacts" ui-sref-opts="{ events: ['change', 'blur'] }">
+     * <input type="text" ui-sref="contacts" ui-sref-opts="{ eventslist: ['change', 'blur'] }">
      * ```
      *
      * ### Highlighting the active link
@@ -9712,7 +9712,7 @@
      * **This is in contrast with `ui-sref`, which takes a state name as a string literal.**
      *
      * #### Example:
-     * Create a list of links.
+     * Create a eventslist of links.
      * ```html
      * <li ng-repeat="link in navlinks">
      *   <a ui-state="link.state">{{ link.displayName }}</a>
@@ -9734,7 +9734,7 @@
      * The `ui-state-params` attribute value is `$watch`ed and evaluated as an expression.
      *
      * #### Example:
-     * This example renders a list of links with param values.
+     * This example renders a eventslist of links with param values.
      * The state's `userId` parameter value comes from each user's `user.id` property.
      * ```html
      * <li ng-repeat="link in navlinks">
@@ -9754,12 +9754,12 @@
      *
      * ### Other DOM Events
      *
-     * You can also customize which DOM events to respond to (instead of `click`) by
-     * providing an `events` array in the `ui-state-opts` attribute.
+     * You can also customize which DOM eventslist to respond to (instead of `click`) by
+     * providing an `eventslist` array in the `ui-state-opts` attribute.
      *
      * #### Example:
      * ```html
-     * <input type="text" ui-state="contacts" ui-state-opts="{ events: ['change', 'blur'] }">
+     * <input type="text" ui-state="contacts" ui-state-opts="{ eventslist: ['change', 'blur'] }">
      * ```
      *
      * ### Highlighting the active link
@@ -9851,7 +9851,7 @@
      *
      * ### Parameter values
      * If the `ui-sref`/`ui-state` includes parameter values, the current parameter values must match the link's values for the link to be highlighted.
-     * This allows a list of links to the same state with different parameters to be rendered, and the correct one highlighted.
+     * This allows a eventslist of links to the same state with different parameters to be rendered, and the correct one highlighted.
      *
      * #### Example:
      * ```html

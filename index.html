@@ -8,9 +8,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <script src="app/libs/angular.js"></script>
+    <script src="app/libs/angular-ui-router.js"></script>
     <script src="app/app.js"></script>
-    <script src="app/todo.controller.js"></script>
-    <script src="app/todo.service.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/views/home/home.controller.js"></script>
+    <script src="app/views/eventslist/eventslist.controller.js"></script>
+    <script src="app/views/update/update.controller.js"></script>
+    <script src="app/service/eventslistobject.js"></script>
+    <script src="app/component/list/event.component.js"></script>
+
   </head>
   <body>
 
@@ -32,7 +38,7 @@
                 <h5 class="text-primary"> EVENT MANAGER </h5>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" ui-sref="eventslist">
                   <i class="far fa-edit"></i>
                   Events
                 </a>
@@ -75,22 +81,16 @@
           <div class=" pt-4 border-bottom">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Events</li>
               </ol>
             </nav>
           </div>
 
-          <h2>Section LIST</h2>
-
-            <h1 class="color">TEST</h1>
-            <div ng-controller="todoController as todo">
-              {{todo.list}}
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias animi architecto asperiores aut beatae cupiditate deserunt dignissimos dolores eos facere illo incidunt numquam pariatur perferendis porro quaerat qui quisquam reiciendis repellendus sed sit suscipit ullam vel, veniam voluptas voluptatibus? Architecto atque dolores eligendi id iure nisi voluptatibus. Accusantium cupiditate dolore dolorem ea fugiat iste itaque nostrum quos sequi voluptatem. Autem dolorum eos error eveniet, ex explicabo fuga id illo in labore libero maiores minus obcaecati odit placeat quibusdam quod repellendus saepe sit soluta, sunt ut veritatis. Ad, alias amet dolorem ea error hic nemo nostrum reiciendis, reprehenderit temporibus vero?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consectetur labore molestiae natus nostrum recusandae reiciendis sint tenetur, vero voluptatibus. Assumenda dolore dolores, doloribus eum, id iste laborum mollitia neque nostrum, nulla officia optio possimus unde velit vitae. At dignissimos doloribus earum expedita fugiat harum, illo itaque natus nobis omnis placeat praesentium quaerat sed similique ullam velit veritatis voluptatum. Animi atque consequatur cum dolorem eum facere, illum inventore iste labore laborum magnam maxime molestias mollitia nisi nulla odit officiis perspiciatis, quaerat quam repellendus rerum sit sunt! Doloremque obcaecati quam sequi voluptatum. Adipisci amet, architecto asperiores dignissimos exercitationem hic id maxime, nam quaerat quia quisquam repellat repellendus saepe, tempore vitae. Dolor enim fugit inventore quasi quo vel. A amet consequuntur culpa dolorem dolores, ea eos esse excepturi expedita in iste labore laboriosam laudantium libero maxime nam nulla odio quae qui, quis repellendus sapiente soluta sunt suscipit unde vero vitae voluptatibus! Autem culpa delectus dolorum eligendi est, eum eveniet exercitationem labore libero nam neque nisi nostrum numquam perspiciatis possimus quidem, recusandae saepe sunt unde voluptates. Consequatur dolorem enim eos fugiat, optio recusandae repellendus saepe similique tempora ut. Autem est incidunt neque odio quidem vero? Adipisci, aliquam cum dignissimos dolor esse ipsa itaque laudantium, magni nisi nobis nostrum perferendis placeat quam qui quia quibusdam quidem quod repellat reprehenderit saepe soluta suscipit tempore veritatis voluptate voluptates! In necessitatibus odit quia quibusdam reprehenderit sed vero voluptates? Doloremque nesciunt nihil perspiciatis quod ut? Aliquid amet aut blanditiis dicta distinctio ducimus error est et explicabo minus modi odio, optio reprehenderit temporibus totam! Aliquid animi at, dolore ducimus eligendi ex laboriosam pariatur quae quaerat rem repellat suscipit veritatis voluptatibus! Alias aliquam aliquid animi aperiam aspernatur assumenda consectetur corporis dignissimos dolorem dolorum eligendi error est ex excepturi expedita ipsam iure libero magnam maxime minus modi molestiae nam non officiis quaerat quas qui quia quis reiciendis sapiente sint sit tempora tenetur veritatis vero, vitae voluptas? A alias atque aut consectetur cumque debitis dolore dolorem dolorum ea eum excepturi exercitationem fugiat fugit harum labore magni nam neque nostrum nulla quae quis, ratione recusandae sed sit tenetur totam voluptas voluptate? Accusamus accusantium amet asperiores consequuntur cumque delectus deleniti eos, eum id incidunt libero minus nostrum repellat, repudiandae sed sint soluta vitae, voluptatibus? Adipisci amet animi architecto assumenda aut autem blanditiis dicta dolorem doloribus ea et explicabo fuga libero magni minima minus molestiae nemo non numquam possimus provident quaerat quas quidem quo recusandae sed, sit soluta sunt tenetur unde vel veniam voluptatem voluptatibus. Adipisci aliquam, aliquid architecto consequuntur dignissimos dolores dolorum eius error exercitationem harum illo laudantium molestiae nisi officiis quas quia ratione rem saepe sint, veritatis! Amet eaque expedita ipsam officiis quae quas quisquam, saepe veniam. Ab commodi culpa dicta distinctio, eius libero non officiis quibusdam quo quos recusandae ullam unde, veritatis voluptas voluptatibus. Accusamus aliquid aperiam blanditiis commodi, culpa dignissimos dolore dolores doloribus eligendi enim error est et expedita facere fuga illo inventore laboriosam minus neque non officia officiis pariatur quaerat quod recusandae similique totam ullam ut veniam vitae voluptas voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur dignissimos dolorem dolores error explicabo id impedit ipsum, magni minima quae quisquam recusandae repudiandae veritatis voluptate voluptatibus! Eum eveniet explicabo officia quos tempore. Aliquam at aut commodi consequuntur cum cupiditate dicta dolore ea, eius, eligendi error harum impedit iste itaque magnam maiores nesciunt nisi odit officia porro provident quidem quisquam recusandae rerum sapiente temporibus ut vero! Animi aperiam aspernatur aut, cum dignissimos dolorem eos exercitationem facere fuga fugit ipsum, laboriosam maxime minus, nesciunt non officiis quaerat vel. Ab adipisci, alias cumque deleniti dolor, ducimus incidunt ipsa itaque modi necessitatibus nobis non quaerat quibusdam ratione voluptatem? Aspernatur commodi dolorum ducimus iure maiores reiciendis! Adipisci aliquid architecto atque corporis earum eos, esse fugiat ipsum numquam pariatur perspiciatis placeat quae quam quo sapiente, sed unde velit veritatis? Architecto at autem consequatur debitis deserunt eaque enim illo ipsa modi natus odit, perspiciatis placeat tempore temporibus vitae voluptate voluptatibus? Accusamus asperiores culpa cumque deserunt est facilis laborum magnam magni, perspiciatis voluptate. Aperiam at debitis doloremque fugiat harum in laudantium magnam magni minus natus nemo nulla odit porro provident quasi rem reprehenderit rerum soluta, vel veniam veritatis voluptate voluptates. Consectetur corporis ipsum praesentium quibusdam sit soluta voluptate. Culpa delectus et impedit inventore placeat reprehenderit repudiandae. Ad architecto beatae commodi consequatur debitis dignissimos, dolorum illum in ipsam labore optio perspiciatis quos sequi tempore tenetur unde vel? Aperiam corporis debitis distinctio quae quidem quis unde! Accusamus atque blanditiis, culpa, eius ipsam ipsum maiores minus natus non quas rerum suscipit? Adipisci architecto assumenda autem commodi dolorem earum, esse illo impedit itaque, iusto molestiae repellendus, sunt! Accusamus alias consequatur delectus dolorem minus non repudiandae. Dolorem ipsam iusto mollitia nobis voluptatum! Aliquam animi autem commodi cumque dolor magni nihil reiciendis unde voluptate voluptatem. Accusantium amet, animi autem eos est maxime quos. Corporis, cumque dicta dolor nam nobis non rem sequi similique ut voluptatibus. Adipisci architecto asperiores atque, commodi cupiditate deserunt, eveniet ex exercitationem expedita facilis itaque laudantium, maxime nihil nisi nobis omnis porro possimus repellendus soluta tenetur. Aliquid delectus esse eveniet ipsum, omnis quasi ratione sed suscipit! A ab asperiores autem corporis culpa doloremque doloribus eveniet illo laudantium modi nisi possimus provident quaerat quibusdam ratione rerum, velit! Consectetur cum cupiditate esse molestiae nam natus non nulla numquam porro quae. Aliquid amet architecto blanditiis cum cupiditate esse, et explicabo maxime porro ut! Atque beatae consectetur corporis dicta ducimus, inventore magni necessitatibus neque rem! Accusamus ad adipisci alias aliquid animi, assumenda blanditiis consectetur deserunt ea eos fuga id illum iusto mollitia nostrum perferendis quaerat quibusdam quod reiciendis sed sint soluta, veritatis vero! Accusantium consequatur corporis cum debitis in ipsam laborum minus nobis quibusdam similique? Ab deleniti est expedita fugiat impedit inventore ipsum magni maiores, molestias nam neque, odit officia optio sit ullam ut voluptatem? Autem dolorem ea harum qui quo quod, totam ullam? Accusamus ad animi blanditiis deserunt ducimus enim et hic magni nam optio, quas, qui rerum tenetur vitae voluptatum. Accusantium eius fugit, illo libero nisi, numquam odio perferendis rerum tempora voluptas voluptates.
-              </p>
-            </div> </div>
+          <!--<div ui-view="home" ></div>-->
+          <!--<div ui-view="events" class="row"></div>-->
+          <!--<div ui-view="update"></div>-->
+        <ui-view></ui-view>
         </main>
 
       </div>
