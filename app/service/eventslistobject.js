@@ -7,7 +7,7 @@ eventsModule
         },{
             name: 'ORD_CRE_1',
             slug: 'ord-cre-1',
-            isDirty: false // asta afiseaza statusul de PENDING CHANGES
+            isDirty: true// asta afiseaza statusul de PENDING CHANGES
         },{
             name: 'PUSHBACK',
             slug: 'pushback',
@@ -15,6 +15,6 @@ eventsModule
         },{
            name: 'PUSHBACK',
            slug: 'pushback',
-           isDirty: false
+           isDirty: true
        }]
     });

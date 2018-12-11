@@ -2408,7 +2408,7 @@
          *
          * Given a ResolveContext that this Resolvable is found in:
          * Wait for this Resolvable's dependencies, then invoke this Resolvable's function
-         * and update the Resolvable's state
+         * and definition the Resolvable's state
          */
         Resolvable.prototype.resolve = function (resolveContext, trans) {
             var _this = this;
@@ -2438,7 +2438,7 @@
             var node = resolveContext.findNode(this);
             var state = node && node.state;
             var maybeWaitForRx = this.getPolicy(state).async === 'RXWAIT' ? waitForRx : identity;
-            // After the final value has been resolved, update the state of the Resolvable
+            // After the final value has been resolved, definition the state of the Resolvable
             var applyResolvedValue = function (resolvedValue) {
                 _this.data = resolvedValue;
                 _this.resolved = true;
@@ -6912,9 +6912,9 @@
         var options = transition.options();
         var $state = transition.router.stateService;
         var $urlRouter = transition.router.urlRouter;
-        // Dont update the url in these situations:
+        // Dont definition the url in these situations:
         // The transition was triggered by a URL sync (options.source === 'url')
-        // The user doesn't want the url to update (options.location === false)
+        // The user doesn't want the url to definition (options.location === false)
         // The destination state, and all parents have no navigable url
         if (options.source !== 'url' && options.location && $state.$current.navigable) {
             var urlOptions = { replace: options.location === 'replace' };
@@ -7543,7 +7543,7 @@
          * `$state.go` calls `$state.transitionTo` internally but automatically sets options to
          * `{ location: true, inherit: true, relative: router.globals.$current, notify: true }`.
          * This allows you to use either an absolute or relative `to` argument (because of `relative: router.globals.$current`).
-         * It also allows you to specify * only the parameters you'd like to update, while letting unspecified parameters
+         * It also allows you to specify * only the parameters you'd like to definition, while letting unspecified parameters
          * inherit from the current parameter values (because of `inherit: true`).
          *
          * #### Example:
@@ -9551,7 +9551,7 @@
      *
      * ### hrefs
      * If the linked state has a URL, the directive will automatically generate and
-     * update the `href` attribute (using the [[StateService.href]]  method).
+     * definition the `href` attribute (using the [[StateService.href]]  method).
      *
      * #### Example:
      * Assuming the `users` state has a url of `/users/`
@@ -9648,7 +9648,7 @@
      * - A middle-click, right-click, or ctrl-click is handled (natively) by the browser to open the href in a new window, for example.
      *
      * - Unlike the parameter values expression, the state name is not `$watch`ed (for performance reasons).
-     * If you need to dynamically update the state being linked to, use the fully dynamic [[uiState]] directive.
+     * If you need to dynamically definition the state being linked to, use the fully dynamic [[uiState]] directive.
      */
     var uiSrefDirective;
     uiSrefDirective = [
@@ -9726,7 +9726,7 @@
      *
      * ### hrefs
      * If the linked state has a URL, the directive will automatically generate and
-     * update the `href` attribute (using the [[StateService.href]]  method).
+     * definition the `href` attribute (using the [[StateService.href]]  method).
      *
      * ### Parameter Values
      * In addition to the state name expression, a `ui-state` can include parameter values which are applied when activating the state.

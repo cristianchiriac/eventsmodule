@@ -13,10 +13,10 @@ eventsModule
                 controller: 'eventslistController as ctrl'
             })
 
-            .state('update', {
-                url: '/update',
-                templateUrl: 'app/views/update/update.controller.html',
-                controller: 'updateController'
+            .state('definition', {
+                url: '/definition',
+                templateUrl: 'app/views/definition/definition.controller.html',
+                controller: 'definitionController as ctrl'
             })
             $urlRouterProvider.otherwise('/');
     });
