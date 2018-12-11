@@ -1,6 +1,6 @@
 
 eventsModule
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $locationProvider) {
         $stateProvider
             .state('home', {
                 url: '/',
