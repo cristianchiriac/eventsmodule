@@ -1,0 +1,165 @@
+upload-file {
+
+    .dropzone {
+        @include blue-box;
+        padding: 20px;
+        margin-bottom: 24px;
+
+        &.danger {
+            border-color: $russet;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .icon {
+                font-size: 48px;
+                margin-right: 20px;
+                color: #D1DCE6;
+            }
+
+            .description {
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .error {
+            background: $russet;
+            color: $white;
+            padding: 6px;
+            border-radius: 4px;
+        }
+    }
+
+    .file {
+        @include blue-box;
+        padding: 20px;
+        margin-bottom: 24px;
+        animation: slide-down .4s ease;
+
+        .information {
+            display: flex;
+            align-items: center;
+
+            .icon {
+                width: 50px;
+                font-size: 40px;
+                color: #D1DCE6;
+            }
+
+            .filename {
+                flex-grow: 1;
+                padding-right: 20px;
+            }
+
+            .size {
+                padding-right: 20px;
+            }
+
+            .actions {
+
+            }
+        }
+
+        .error {
+            color: $russet;
+        }
+
+        .progress-bar {
+            border-radius: 4px;
+            height: 12px;
+            background: $gray-lighter;
+            overflow: hidden;
+            margin-bottom: 12px;
+
+            .progress {
+                width: 0;
+                display: block;
+                height: 12px;
+                background: $tiffany-blue;
+                transition: width .4s ease-in;
+            }
+        }
+
+        &.error {
+
+            .information {
+
+                .icon {
+                    color: $russet;
+                }
+            }
+
+            .progress-bar {
+
+                .progress {
+                    background: $russet;
+                }
+            }
+        }
+
+        &.info {
+            .information {
+
+                .icon {
+                    color: $tiffany-blue;
+                }
+            }
+        }
+
+        &.success {
+            color: $charcoal;
+
+            .information {
+
+                .icon {
+                    color: $mint;
+                }
+            }
+
+            .progress-bar {
+                .progress {
+                    background: $mint;
+                }
+            }
+
+        }
+
+    }
+}
+
+.file-list {
+
+    .file {
+
+        .card-title {
+            font-size: 20px;
+            color: $tiffany-blue;
+        }
+
+        overflow: hidden;
+
+        &:hover {
+            background: $alice-blue-dark;
+            transition: background 0.2s ease;
+
+            .actions {
+                bottom: 25px;
+            }
+        }
+
+        .actions {
+            position: absolute;
+            -webkit-transition: bottom 0.2s ease-in-out;
+            transition: bottom 0.2s ease-in-out;
+            right: 20px;
+            bottom: -60px;
+        }
+    }
+}

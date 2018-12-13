@@ -1,0 +1,13 @@
+<div class="environment">
+    <div class="name">{{channel.slug}}</div>
+    <label class="switch switch-3d switch-success" authorization="true" permissions="['event-write', 'channel-write']">
+        <input
+            type="checkbox"
+            class="switch-input"
+            ng-checked="{{channel.active}}"
+            ng-model="channel.active"
+            ng-change="updateEvent(event)">
+        <span class="switch-label"></span>
+        <span class="switch-handle"></span>
+    </label>
+</div>

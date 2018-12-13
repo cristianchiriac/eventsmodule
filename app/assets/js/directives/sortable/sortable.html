@@ -1,0 +1,10 @@
+<ul class="unused-items" dnd-list="sortableItems">
+    <li ng-if="sortableItems.length <= 0">Remove sortable fields here</li>
+    <li class="item draggable" ng-repeat="object in sortableItems" ng-show="object.field" dnd-dragstart="checkDropzone(item)" dnd-draggable="object" dnd-moved="sortableItems.splice($index, 1)" dnd-effect-allowed="all" dnd-selected="models.selected = object"
+      ng-class="{'selected': models.selected === object}">
+        {{object.field}}
+        <div class="actions">
+            <span class="fa fa-arrows icon"></span>
+        </div>
+    </li>
+</ul>

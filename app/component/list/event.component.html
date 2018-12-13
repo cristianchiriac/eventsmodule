@@ -9,8 +9,34 @@
             <input class="form-check-input position-static" type="radio" name="blankRadio">
         </div>
         <span>Update: </span>
-        <a ui-sref="definition">DEFINITION</a>
-        <a ui-sref="actions">ACTIONS</a>
-        <a ui-sref="data-mapping">DATA MAPPING</a>
+        <a ui-sref="event({source:true, actions: false, mapping: false})">DEFINITION</a>
+        <a ui-sref="event({source:false, actions: true, mapping: false})">ACTIONS</a>
+        <a ui-sref="event({source:false, actions: false, mapping: true})">DATA MAPPING</a>
     </div>
+</div>
+
+      <!--  <div class="card-deck">
+            <div class="card event" dir-paginate="event in events|itemsPerPage:18">
+                <div class="card-block">
+                    <h4 class="card-title">
+                        {{event.item.name}}
+                    </h4>
+                    <span ng-if="event.item.isDirty" class="badge badge-warning">PENDING CHANGES</span>
+                    <div class="environments">
+                        <channels ng-repeat="channel in event.channels" changed-events="vm.changedEvents" channel="channel" event="event" />
+                    </div>
+                </div>
+            </div>-->
+   <!-- <div class="controls col-sm-12">
+        <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" class="pagination-container"></dir-pagination-controls>
+        <a ui-sref="app.newEvent" class="btn btn-primary add-new" ng-if="vm.changedEvents.length <= 0" authorization="true" permissions="['event-write']">
+            <span class="glyphicon glyphicon-plus"></span> Add new event
+        </a>
+        <a ng-click="updateChanges()" class="btn btn-primary add-new" ng-if="vm.changedEvents.length >= 1" authorization="true" permissions="['event-write', 'channel-write']">
+            <span class="glyphicon glyphicon-check"></span> Confirm changes
+        </a>
+        <a ng-click="discardChanges($event)" class="btn btn-danger add-new" ng-if="vm.changedEvents.length >= 1" authorization="true" permissions="['event-write', 'channel-write']">
+            <span class="glyphicon glyphicon-times-circle-o"></span> Discard changes
+        </a>
+    </div>-->
 </div>

@@ -1,0 +1,39 @@
+<h3>
+    Hello
+    <span class="primary">{{$ctrl.user.firstName}}</span>
+</h3>
+<div class="slogan" ng-hide="$ctrl.formSubmitted">
+    It looks like you don't have access to REA. Please fill in the form to obtain the needed rights.
+</div>
+<form ng-submit="signup($event)" ng-hide="$ctrl.formSubmitted">
+
+    <div class="input-group">
+        <i class="icon fa fa-address-card-o"></i>
+        <input type="text" id="username" name="username" class="form-control disabled" placeholder="Username"
+               ng-model="$ctrl.user.user" ng-disabled="true">
+    </div>
+    <dropdown
+            icon="'globe'"
+            identifier="'country'"
+            placeholder="$ctrl.countryPlaceholder"
+            items="$ctrl.countries"
+            set-item="$ctrl.setCountry({country: item});"></dropdown>
+    <dropdown
+            icon="'user'"
+            identifier="'role'"
+            placeholder="$ctrl.rolePlaceholder"
+            items="$ctrl.roles"
+            set-item="$ctrl.setRole({role: item});"></dropdown>
+    <div class="input-group tooltip-wrapper" ng-class="{'disabled': !$ctrl.request.country || !$ctrl.request.role}" tooltip-placement="top"
+         uib-tooltip="Enter country and role!" tooltip-enable="!$ctrl.request.country || !$ctrl.request.role">
+        <i class="icon-signup white fa fa-sign-in"></i>
+        <button type="submit" ng-click="$ctrl.signUp()" ng-disabled="!$ctrl.request.country || !$ctrl.request.role"
+                class="btn btn-primary btn-block login">SUBMIT
+        </button>
+    </div>
+</form>
+<div class="slogan" ng-show="$ctrl.formSubmitted">
+    Your request could not be processed. Please contact REA team by sending an email with your request to <a
+        href="mailto:msits.group.rea.jira@mediamarktsaturn.com"
+        target="_top">msits.group.rea.jira@mediamarktsaturn.com</a>
+</div>

@@ -17105,7 +17105,7 @@
      *   }, function(reason) {
      *     alert('Failed: ' + reason);
      *   }, function(definition) {
-     *     alert('Got notification: ' + definition);
+     *     alert('Got notificationid: ' + definition);
      *   });
      * ```
      *
@@ -17957,7 +17957,7 @@
                      *
                      * {@link ng.$rootScope.Scope#$destroy $destroy()} must be called on a scope when it is
                      * desired for the scope and its child scopes to be permanently detached from the parent and
-                     * thus stop participating in model change detection and listener notification by invoking.
+                     * thus stop participating in model change detection and listener notificationid by invoking.
                      *
                      * @param {boolean} isolate If true, then the scope does not prototypically inherit from the
                      *         parent scope. The scope is isolated, as it can not see parent scope properties.
@@ -18358,7 +18358,7 @@
                                 newLength = newValue.length;
 
                                 if (oldLength !== newLength) {
-                                    // if lengths do not match we need to trigger change notification
+                                    // if lengths do not match we need to trigger change notificationid
                                     changeDetected++;
                                     oldValue.length = oldLength = newLength;
                                 }

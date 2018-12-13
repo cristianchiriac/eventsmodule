@@ -1,0 +1,52 @@
+<div class="well bottom-fix">
+    <h4>Metadata</h4>
+    <add-source model="metadata"></add-source>
+    <div class="query-builder">
+        <dl class="rules-group-container">
+            <dd class="rules-group-body">
+                <ul class="rules-list">
+                    <li class="rule-container" ng-repeat="source in event.metadata">
+                        <div class="rule-value-container">
+                            <div class="form-inline">
+                                <div class="input-group"
+                                     ng-class="{'invalid': !source.source && eventForm.submitted}">
+                                    <div class="input-group-addon">
+                                        <label>Source</label>
+                                    </div>
+                                    <select class="form-control" name="metadata_{{$index}}"
+                                            id="metadata_{{$index}}" ng-model="source.source"
+                                            ng-options="item as item for item in ['JMS','CAR']"
+                                            required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="input-group" ng-if="source.source == 'CAR'"
+                                     ng-class="{'invalid': eventForm['metadata_outlet_'+ $index].$invalid && eventForm.submitted}">
+                                    <div class="input-group-addon">
+                                        <label for="metadata_outlet_{{$index}}">Outlet Xpath</label>
+                                    </div>
+                                    <input type="text" id="metadata_outlet_{{$index}}"
+                                           name="metadata_outlet_{{$index}}" class="form-control"
+                                           ng-model="source['outlet']" required>
+                                </div>
+                                <div class="input-group">
+                                    <a class="btn btn-danger"
+                                       ng-click="remove(event.metadata, $index)">
+                                        <span class="fa fa-trash"></span>
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a ng-click="addRule(source.points)" class="btn btn-primary"
+                           ng-show="source.points.length == 0" ng-if="source.source"><i
+                                class="glyphicon glyphicon-plus"></i> Add Data</a>
+                        <source model="event.metadata"
+                                template="views/components/points-metadata.html" name="name"
+                                source-index="$index"></source>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>

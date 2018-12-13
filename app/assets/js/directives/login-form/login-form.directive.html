@@ -1,0 +1,20 @@
+<h3>
+    <span class="primary">REA</span> Login
+</h3>
+<div class="slogan">
+    Login and start you journey on a wonderful experience of designing your templates
+</div>
+<form ng-submit="login($event)" ng-if="!isLoggedIn">
+    <div class="input-group">
+        <i class="icon fa fa-user"></i>
+        <input type="text" class="form-control" placeholder="Username" ng-model="vm.username">
+    </div>
+    <div class="input-group">
+        <i class="icon fa fa-key"></i>
+        <input type="password" class="form-control" placeholder="Password" ng-model="vm.password">
+    </div>
+    <div class="input-group tooltip-wrapper" ng-class="{'disabled': !vm.username || !vm.password}" tooltip-placement="top" uib-tooltip="Enter username and password!" tooltip-enable="!vm.username || !vm.password">
+        <i class="icon white fa fa-sign-in"></i>
+        <button ng-disabled="!vm.username || !vm.password" type="submit" class="btn btn-primary btn-block login">Login</button>
+    </div>
+</form>

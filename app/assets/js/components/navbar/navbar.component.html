@@ -1,0 +1,55 @@
+<header class="app-header navbar" ng-controller="loginController">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">&#9776;</button>
+    <a class="navbar-brand" ui-sref="appSimple.dashboard"></a>
+    <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto d-md-down-none">
+        <li class="nav-item">
+            <div class="tooltip-wrapper disabled" tooltip-placement="bottom" uib-tooltip="Cannot change the language in current state." tooltip-enable="tenantDisabled">
+                <div class="form-element distribution-channel" ng-class="{'disabled': $ctrl.status.tenantDisabled}">
+                    <select
+                            name="distributionChannels"
+                            id="distributionChannels"
+                            class="element"
+                            ng-model="$ctrl.tenant"
+                            ng-options="item as item for item in $ctrl.tenants track by item"
+                            ng-disabled="$ctrl.status.tenantDisabled"
+                            ng-change="$ctrl.updateTenant($ctrl.tenant);"
+                            fix-null>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="tooltip-wrapper disabled" tooltip-placement="bottom" uib-tooltip="Cannot change the language in current state." tooltip-enable="languagesDisabled">
+                <div class="form-element languages" ng-class="{'disabled': $ctrl.status.languagesDisabled}">
+                    <select
+                            name="languages"
+                            id="languages"
+                            class="element"
+                            ng-model="$ctrl.language"
+                            ng-options="language.isoCode as (language.name + ': ' + language.isoCode) for language in $ctrl.languages"
+                            ng-disabled="$ctrl.status.languagesDisabled"
+                            ng-change="$ctrl.updateLanguage($ctrl.language);"
+                            fix-null>
+                    </select>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item dropdown account">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                <span class="avatar fa fa-user-circle-o"></span>
+                <span class="d-md-down-none">{{$ctrl.userName}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>Account</strong>
+                </div>
+                <a class="dropdown-item" href="#" ng-click="logout()"><i class="fa fa-lock"></i> Logout</a>
+            </div>
+        </li>
+    </ul>
+</header>

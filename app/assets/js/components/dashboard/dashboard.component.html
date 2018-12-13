@@ -1,0 +1,42 @@
+<h3>
+    Hello
+    <span class="primary">{{$ctrl.user.firstName}}</span>
+</h3>
+<div class="slogan">
+    Refill your energy with a cup of coffee and continue with:
+</div>
+<ul class="links">
+    <li>
+        <a href="#" ui-sref="app.events" authorization="true" permissions="['event-read']">
+            <i class="fa fa-random"></i> Events
+        </a>
+    </li>
+    <li>
+        <a href="#" ui-sref="app.templates-list" authorization="true" permissions="['template-read']">
+            <i class="fa fa-envelope"></i> Email Templates
+        </a>
+    </li>
+    <li>
+        <a href="#" ui-sref="app.pdf-list" authorization="true" permissions="['template-read']">
+          <i class="fa fa-file"></i> PDF Templates
+        </a>
+    </li>
+    <li>
+        <a href="#" ui-sref="app.files" authorization="true" permissions="['file-read']">
+            <i class="fa fa-file-pdf-o"></i> Uploaded files
+        </a>
+    </li>
+    <li>
+        <a href="#" ui-sref="app.resend" authorization="true" permissions="['template-read']">
+          <i class="fa fa-cogs"></i> Email configuration
+        </a>
+    </li>
+    <li>
+        <a href="#" ui-sref="app.pdf-configuration" authorization="true" permissions="['template-read']">
+          <i class="fa fa-cogs"></i> PDF configuration
+        </a>
+    </li>
+</ul>
+<div class="input-groupp" style="margin-top:30px;">
+    <button type="button" ng-click="$ctrl.logout()" class="btn btn-primary logout"><i class="icon white fa fa-sign-out"></i> Logout</button>
+</div>

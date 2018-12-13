@@ -1,0 +1,27 @@
+<div
+        class="file"
+        data-ng-if="fileController.file && !fileController.newFile"
+        data-ng-class="fileController.class">
+    <div class="information">
+        <div class="icon">
+            <i class="fa fa-file-pdf-o"></i>
+        </div>
+        <div class="filename">
+            {{
+                (fileController.file.fileName) ? fileController.file.fileName : fileController.file.name | extension:fileController.options.showExtension:fileController.options.extension
+            }}
+        </div>
+        <div class="size" ng-if="fileController.options.size">
+            {{fileController.file.size | size}}
+        </div>
+    </div>
+    <div class="progress-bar" ng-if="fileController.options.progressBar || fileController.status.progress">
+        <div class="progress" style="width:{{(fileController.status.progress) ? fileController.status.progress + '%' : 0}}"></div>
+    </div>
+    <div class="error" ng-if="fileController.status.type === 'error'">
+       {{fileController.status.message}}
+    </div>
+    <div class="success" ng-if="fileController.status.type === 'success'">
+        The file was successfully saved!
+    </div>
+</div>
