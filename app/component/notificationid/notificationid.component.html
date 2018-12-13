@@ -1,0 +1,16 @@
+<div class="well bottom-fix">
+    <h4>Notification ID</h4>
+    <div class="query-builder">
+        <dl class="rules-group-container">
+            <dd class="rules-group-body">
+                <ul class="rules-list">
+                    <li class="rule-container" ng-repeat="source in event.key"
+                        ng-class="{'invalid': eventForm['key_query_' + $index].$invalid && eventForm.submitted}">
+                        <div add-new-source model="key" index="{{$index}}" rules="" group="point"
+                             ng-if="source.source"></div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<li class="rule-container" ng-class="{'invalid': eventForm.submitted && (eventForm['action_' + objectIndex + '_url_' + $index].$invalid && (!document.template.slug || !document.template.version))}">
+    <div class="form-inline">
+        <div class="input-group" ng-class="{'invalid': eventForm['action_' + objectIndex + '_type_' + $index].$invalid && eventForm.submitted}">
+            <div class="input-group-addon">
+                <label>Type</label>
+            </div>
+            <select class="form-control" name="action_{{objectIndex}}_type_{{$index}}" id="action_{{objectIndex}}_type_{{$index}}" ng-change="checkDocumentValue($index)" ng-model="document.type" ng-options="item.value as item.name for item in documentSources" required></select>
+        </div>
+        <div ng-if="document.type == 'URL'" class="input-group grow" ng-class="{'invalid': eventForm.submitted && eventForm['action_' + objectIndex + '_url_' + $index].$invalid }">
+            <input type="url" class="form-control no-animation" name="action_{{objectIndex}}_url_{{$index}}" id="action_{{objectIndex}}_url_{{$index}}" ng-model="document.url" required/>
+        </div>
+        <div ng-if="document.type == 'TEMPLATE'" class="input-group grow" ng-class="{'invalid':eventForm.submitted && !document.template.slug}">
+            <select id="action_{{objectIndex}}_template_{{$index}}_slug" empty-option="true" name="action_{{objectIndex}}_template_{{$index}}_slug" class="form-control no-animation" ng-model="document.template.slug" ng-options="document.slug as document.name for document in documents"  ng-change="getPdfVersions(document.template, $index)" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <!--file select-->
+        <div ng-if="document.type == 'UPLOADED_FILE'" class="input-group grow" ng-class="{'invalid':eventForm.submitted && !document.uploadedFile.slug}">
+            <select
+                    id="action_{{objectIndex}}_uploadedFile_{{$index}}_slug"
+                    class="form-control no-animation"
+                    name="action_{{objectIndex}}_uploadedFile_{{$index}}_slug"
+                    data-empty-option="true"
+                    data-ng-options="file.slug as file.name for file in files"
+                    data-ng-model="document.uploadedFile.slug"
+                    data-ng-change="getFileVersions(document.uploadedFile, $index)"
+                    required>
+                <option value=""></option>
+            </select>
+        </div>
+        <!--version select-->
+        <div class="input-group" ng-class="{'invalid':eventForm.submitted && !document.template.version}">
+            <select id="action_{{objectIndex}}_template_{{$index}}_version" empty-option="true" name="action_{{objectIndex}}_template_{{$index}}_version" class="form-control no-animation" ng-model="document.template.version" ng-options="version as version for version in pdfVersions[$index]" ng-if="document.template.slug" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="input-group" ng-class="{'invalid':eventForm.submitted && !document.uploadedFile.version}">
+            <select
+                    id="action_{{objectIndex}}_file_{{$index}}_version"
+                    class="form-control no-animation"
+                    name="action_{{objectIndex}}_file_{{$index}}_version"
+                    data-empty-option="true"
+                    data-ng-options="version as version for version in fileVersions[$index]"
+                    data-ng-model="document.uploadedFile.version"
+                    data-ng-if="document.uploadedFile"
+                    required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="input-group">
+            <button type="button" ng-click="addDocuments()" class="btn btn-success" ng-show="object.attachments && object.attachments.length >= 1 && $last"><i class="glyphicon glyphicon-plus"></i> Add attachments </button>
+                    </div>
+        <div class="input-group">
+            <button type="button" class="btn btn-danger" ng-click="delete($index)">
+                <span class="fa fa-trash"></span> Delete </button>
+        </div>
+    </div>
+    <div add-new-source model="attachments" index="{{$index}}" parent-index="{{$parent.$parent.$index}}" rules="rules" group="documentTrigger"></div>
+</li>

@@ -1,0 +1,21 @@
+// main colors
+$alice-blue: #F7FAFD;
+$alice-blue-dark: #EDF2F5;
+$white: #fff;
+$tiffany-blue: #4DC4D3;
+$charcoal: #4F4F4F;
+$gainsboro: #99A3B0;
+$gray-light: #b0bec5;
+$gray-lighter: #D1DCE6;
+$russet: #D05855;
+$mint: #46E09B;
+// app variables
+$background-light: $alice-blue;
+$stroke: $alice-blue-dark;
+$primary: $tiffany-blue;
+$text-main: $charcoal;
+
+
+// bootstrap overwrites
+$brand-primary: $tiffany-blue;
+$fa-font-path: "../fonts" !default;
