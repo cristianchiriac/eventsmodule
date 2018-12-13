@@ -28,5 +28,4 @@ eventsModule
                 templateUrl: 'app/views/data-mapping/dataMapping.controller.html',
                 controller: 'dataMappingController as ctrlDataMapping'
             })
-            $urlRouterProvider.otherwise('/');
     });

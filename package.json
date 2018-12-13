@@ -8,6 +8,9 @@
   },
   "author": "CristianChiriac",
   "license": "ISC",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  },
   "devDependencies": {
     "node-sass": "^4.10.0"
   }

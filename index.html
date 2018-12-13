@@ -1,101 +1,117 @@
 <!doctype html>
 <html ng-app="eventsModule">
-  <head>
-    <meta charset="utf-8">
-    <title>REA</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="app/libs/angular.js"></script>
-    <script src="app/libs/angular-ui-router.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/routes.js"></script>
-    <script src="app/views/definition/definition.controller.js"></script>
-    <script src="app/views/actions/actions.controller.js"></script>
-    <script src="app/views/data-mapping/dataMapping.controller.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>REA</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="app/libs/angular.js"></script>
+  <script src="app/libs/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/routes.js"></script>
+  <script src="app/views/definition/definition.controller.js"></script>
+  <script src="app/views/actions/actions.controller.js"></script>
+  <script src="app/component/event-action/event-action.component.js"></script>
+
+  <script src="app/views/data-mapping/dataMapping.controller.js"></script>
 
 
-    <script src="app/views/home/home.controller.js"></script>
-    <script src="app/views/eventslist/eventslist.controller.js"></script>
-    <script src="app/service/eventslistobject.js"></script>
-    <script src="app/component/list/event.component.js"></script>
+  <script src="app/views/home/home.controller.js"></script>
+  <script src="app/views/eventslist/eventslist.controller.js"></script>
+  <script src="app/service/eventslistobject.js"></script>
+  <script src="app/component/list/event.component.js"></script>
 
-  </head>
-  <body>
+</head>
 
-    <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap shadow">
-      <a class="navbar-brand col-sm-3 col-md-2" href="#">REA</a>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
-        </li>
-      </ul>
-    </nav>
+<body>
 
-    <div class="container-fluid">
-      <div class="row pt-5">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky pt-4">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <h5 class="text-primary"> EVENT MANAGER </h5>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" ui-sref="eventslist">
-                  <i class="far fa-edit"></i>
-                  Events
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="far fa-edit"></i>
-                  Email templates
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="far fa-edit"></i>
-                  Email configuration
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="far fa-edit"></i>
-                  PDF templates
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="far fa-edit"></i>
-                  Uploaded files
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="far fa-edit"></i>
-                  PDF configuration
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+  <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap shadow">
+    <a class="navbar-brand col-sm-3 col-md-2" href="#">REA</a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class=" pt-4 border-bottom">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Events</li>
-              </ol>
-            </nav>
-          </div>
+  <div class="container-fluid">
+    <div class="row pt-5">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky pt-4">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <h5 class="text-primary"> EVENT MANAGER </h5>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="eventslist">
+                <i class="far fa-edit"></i>
+                Events
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-edit"></i>
+                Email templates
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-edit"></i>
+                Email configuration
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-edit"></i>
+                PDF templates
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-edit"></i>
+                Uploaded files
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-edit"></i>
+                PDF configuration
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class=" pt-4 border-bottom">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Events</li>
+            </ol>
+          </nav>
+        </div>
 
         <ui-view></ui-view>
 
-        </main>
+      </main>
 
-      </div>
     </div>
-  </body>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
 </html>
