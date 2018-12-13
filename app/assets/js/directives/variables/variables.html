@@ -1,0 +1,16 @@
+<div class="variables">
+    <form id="variable-form" name="variableForm" novalidate>
+        <div class="variable-item" ng-repeat="variable in variables">
+            <div class="input-group bottom-fix top-fix">
+                <div class="input-group-addon">
+                    <label for="variable-{{variable.name}}">{{variable.name}}</label>
+                </div>
+                <input ng-if="variable.type != 'COLLECTION'" type="text" id="variable-{{variable.name}}" placeholder="{{variable.name}}" ng-model="vm.requestVariables[variable.name]" name="variable-{{variable.name}}" class="form-control">
+            </div>
+            <div ng-if="variable.type === 'COLLECTION'">
+                <variable-collection object="variable" index="$index" model="vm.requestVariables" template="views/components/variable-source.html">
+                </variable-collection>
+            </div>
+        </div>
+    </form>
+</div>

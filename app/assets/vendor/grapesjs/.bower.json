@@ -1,0 +1,14 @@
+{
+  "name": "grapesjs",
+  "homepage": "https://github.com/artf/grapesjs",
+  "version": "0.12.60",
+  "_release": "0.12.60",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.12.60",
+    "commit": "f7367f559739f45646070af23f995a16c95bd144"
+  },
+  "_source": "https://github.com/artf/grapesjs.git",
+  "_target": "^0.12.37",
+  "_originalSource": "grapesjs"
+}

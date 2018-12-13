@@ -1,0 +1,24 @@
+<h3>
+    Hello
+    <span class="primary">{{currentUser.firstName}}</span>
+</h3>
+<div class="slogan" ng-if="sessionExpired">
+    <p>
+        You session has expired. <br> Please enter your password to continue.
+    </p>
+    <p>
+        Not
+        <span class="primary">{{currentUser.user}}</span>? Login with a
+        <a href="#" class="primary" ng-click="logout()">different account</a>.
+    </p>
+</div>
+<form ng-submit="login($event)">
+    <div class="input-group">
+        <i class="icon fa fa-key"></i>
+        <input type="password" class="form-control" placeholder="Password" ng-model="vm.password">
+    </div>
+    <div class="input-group tooltip-wrapper disabled" tooltip-placement="top" uib-tooltip="Enter password!" tooltip-enable="!vm.password">
+        <i class="icon white fa fa-sign-in"></i>
+        <button type="submit" class="btn btn-primary btn-block" ng-disabled="!vm.password">Continue</button>
+    </div>
+</form>

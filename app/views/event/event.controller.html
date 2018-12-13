@@ -1,0 +1,20 @@
+<a ui-sref="event({source:true, actions: false, mapping: false})">DEFINITION</a>
+<a ui-sref="event({source:false, actions: true, mapping: false})">ACTIONS</a>
+<a ui-sref="event({source:false, actions: false, mapping: true})">DATA MAPPING</a>
+
+<br>
+<pre>
+    {{eventController | json}}
+</pre>
+
+<br>
+
+<div ng-if="eventController.state.source === 'true'">
+    event source
+</div>
+<div ng-if="eventController.state.actions === 'true'">
+    
+</div>
+<div ng-if="eventController.state.mapping  === 'true'">
+    event mapping
+</div>
