@@ -3,8 +3,8 @@ eventsModule
             this.list = eventsListObject.getList()
                 .then(response => {
                     this.list=response;
-                    console.log(response);
+                    console.log(3333, response);
                 }
         )
-            console.log(this.list);
+            console.log(5555, this.list);
     });

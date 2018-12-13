@@ -1,0 +1,187 @@
+/* query builder */
+.well {
+    background: #fff;
+    padding: 16px;
+    border: 1px #dcdcdc solid;
+    border-radius: 4px;
+
+    .builders {
+        &.actions {
+            .input-group {
+                &.invalid {
+                    select {
+                        border-color: $brand-danger;
+                    }
+
+                    .input-group-addon {
+                        border-color: $brand-danger;
+                        background: rgba($brand-danger, 0.14);
+                        color: $brand-danger;
+                    }
+                }
+            }
+        }
+    }
+
+    .query-builder {
+        .rules-group-container {
+            background: none;
+
+            .rule-container {
+                &.invalid {
+                    border-color: $brand-danger;
+                    background: rgba($brand-danger, 0.14);
+                }
+
+                .rule-value-container {
+                    width: 100%;
+                }
+
+                .form-inline {
+                    .form-group {
+                        &.invalid {
+                            ::-webkit-input-placeholder {
+                                color: #f00;
+                            }
+
+                            :-moz-placeholder {
+                                color: #f00;
+                                opacity: 1;
+                            }
+
+                            ::-moz-placeholder {
+                                color: #f00;
+                                opacity: 1;
+                            }
+
+                            :-ms-input-placeholder {
+                                color: #f00;
+                            }
+
+                            ::-ms-input-placeholder {
+                                color: #f00;
+                            }
+
+                            input,
+                            select {
+                                border-color: $brand-danger;
+                            }
+                        }
+
+                        input,
+                        select {
+                            width: 100%;
+                            margin-right: 12px;
+                        }
+                    }
+
+                    .input-group {
+                        &.invalid {
+                            ::-webkit-input-placeholder {
+                                color: $brand-danger;
+                            }
+
+                            :-moz-placeholder {
+                                color: $brand-danger;
+                                opacity: 1;
+                            }
+
+                            ::-moz-placeholder {
+                                color: $brand-danger;
+                                opacity: 1;
+                            }
+
+                            :-ms-input-placeholder {
+                                color: $brand-danger;
+                            }
+
+                            ::-ms-input-placeholder {
+                                color: $brand-danger;
+                            }
+
+                            input,
+                            select {
+                                border-color: $brand-danger;
+                            }
+
+                            .form-control {
+                                border-color: $brand-danger;
+                            }
+
+                            .input-group-addon {
+                                border-color: $brand-danger;
+                                background: rgba($brand-danger, 0.14);
+
+                                label {
+                                    color: $brand-danger;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .sorting {
+                h4 {
+                    color: $gray;
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                }
+
+                ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    &.unused-items,
+                    &.used-items {
+                        border: 2px $gray-lightest dashed;
+                        border-radius: 4px;
+                        padding: 4px;
+                    }
+
+                    li {
+                        border: none;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+
+                        &.draggable:hover {
+                            cursor: move;
+                        }
+
+                        &.item {
+                            background: $gray-lightest;
+                            border-radius: 4px;
+                            color: $gray-dark;
+
+                            &:hover {
+                                background: $gray-lighter;
+                            }
+                        }
+
+                        &.dndPlaceholder {
+                            background: $gray-lighter;
+                            height: 8px;
+                            padding: 0;
+                        }
+
+                        .actions {
+                            float: right;
+
+                            .icon {
+                                cursor: pointer;
+                                padding-right: 6px;
+
+                                &.fa-arrows {
+                                    cursor: move;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
