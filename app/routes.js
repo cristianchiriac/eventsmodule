@@ -18,11 +18,11 @@ eventsModule
                 templateUrl: 'app/views/definition/definition.controller.html',
                 controller: 'definitionController as ctrl'
             })
-            .state('actions', {
-                url: '/actions',
-                templateUrl: 'app/views/actions/actions.controller.html',
-                controller: 'actionsController as ctrlAction'
-            })
+            // .state('actions', {
+            //     url: '/actions',
+            //     templateUrl: 'app/views/actions/actions.controller.html',
+            //     controller: 'actionsController as ctrlAction'
+            // })
             .state('data-mapping', {
                 url: '/data-mapping',
                 templateUrl: 'app/views/data-mapping/dataMapping.controller.html',

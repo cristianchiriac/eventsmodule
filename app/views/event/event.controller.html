@@ -3,9 +3,9 @@
 <a ui-sref="event({source:false, actions: false, mapping: true})">DATA MAPPING</a>
 
 <br>
-<pre>
+<!-- <pre>
     {{eventController | json}}
-</pre>
+</pre> -->
 
 <br>
 
@@ -13,7 +13,7 @@
     event source
 </div>
 <div ng-if="eventController.state.actions === 'true'">
-    
+    <actions actions="eventController.event.actions" ></actions>
 </div>
 <div ng-if="eventController.state.mapping  === 'true'">
     event mapping
