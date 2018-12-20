@@ -1,49 +1,54 @@
 <div class="well bottom-fix">
     <h4>Metadata</h4>
-    <add-source model="metadata"></add-source>
+    <a class="btn btn-primary new"><span class="glyphicon glyphicon-plus"></span> Add new metadata</a>
     <div class="query-builder">
         <dl class="rules-group-container">
             <dd class="rules-group-body">
                 <ul class="rules-list">
-                    <li class="rule-container" ng-repeat="source in event.metadata">
+                    <li class="rule-container" ng-repeat="item in metadata.metadata">
                         <div class="rule-value-container">
                             <div class="form-inline">
-                                <div class="input-group"
-                                     ng-class="{'invalid': !source.source && eventForm.submitted}">
+                                <div class="input-group">
                                     <div class="input-group-addon">
                                         <label>Source</label>
                                     </div>
-                                    <select class="form-control" name="metadata_{{$index}}"
-                                            id="metadata_{{$index}}" ng-model="source.source"
+                                    <select class="form-control"
+                                            ng-model="item.source"
                                             ng-options="item as item for item in ['JMS','CAR']"
                                             required>
-                                        <option></option>
                                     </select>
                                 </div>
-                                <div class="input-group" ng-if="source.source == 'CAR'"
-                                     ng-class="{'invalid': eventForm['metadata_outlet_'+ $index].$invalid && eventForm.submitted}">
+                                <div class="input-group" ng-if="item.source == 'CAR'">
                                     <div class="input-group-addon">
-                                        <label for="metadata_outlet_{{$index}}">Outlet Xpath</label>
+                                        <label>Outlet Xpath</label>
                                     </div>
-                                    <input type="text" id="metadata_outlet_{{$index}}"
-                                           name="metadata_outlet_{{$index}}" class="form-control"
-                                           ng-model="source['outlet']" required>
+                                    <input type="text"
+                                           class="form-control">
                                 </div>
                                 <div class="input-group">
-                                    <a class="btn btn-danger"
-                                       ng-click="remove(event.metadata, $index)">
+                                    <a class="btn btn-danger">
                                         <span class="fa fa-trash"></span>
                                         Delete
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <a ng-click="addRule(source.points)" class="btn btn-primary"
-                           ng-show="source.points.length == 0" ng-if="source.source"><i
-                                class="glyphicon glyphicon-plus"></i> Add Data</a>
-                        <source model="event.metadata"
-                                template="views/components/points-metadata.html" name="name"
-                                source-index="$index"></source>
+                        <ul class="rules-list">
+                            <li class="rule-container" ng-repeat="(key,value) in item.points">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Name" ng-model="key">
+                                    </div>
+                                    <div class="form-group grow">
+                                        <input type="text" class="form-control" placeholder="Xpath" ng-model="value.query">
+                                    </div>
+                                    <div class="btn-group pull-right rule-actions">
+                                        <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i> Add data</a>
+                                        <a class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </dd>
