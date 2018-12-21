@@ -1,10 +1,24 @@
 eventsModule
     .component('actions', {
         bindings: {
-            actions: "="
+            actions: "<"
         },
         templateUrl: "app/component/actions/actions.component.html",
-        controller: function () {
+        controller: function (eventService) {
+
+            this.templates = eventService.getTemplates()
+                .then(response => {
+                    this.templates = response;
+                })
+
+            this.documents = eventService.getDocuments()
+                .then(response => {
+                    this.documents = response;
+                })
+            this.files = eventService.getFiles()
+                .then(response => {
+                    this.files = response;
+                })
         },
         controllerAs: "ctrlActions"
     });

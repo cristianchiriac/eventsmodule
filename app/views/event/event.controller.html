@@ -3,18 +3,18 @@
 <a ui-sref="event({source:false, actions: false, mapping: true})">DATA MAPPING</a>
 
 <br>
-<!-- <pre>
-    {{eventController | json}}
-</pre> -->
+
 
 <br>
+<form novalidation class="eventForm" name="eventForm" ng-submit="editEvent($event)">
 
-<div ng-if="eventController.state.source === 'true'">
-    event source
-</div>
-<div ng-if="eventController.state.actions === 'true'">
-    <actions actions="eventController.event.actions" ></actions>
-</div>
-<div ng-if="eventController.state.mapping  === 'true'">
-    event mapping
-</div>
+    <div ng-if="eventController.state.source === 'true'">
+        event source
+    </div>
+    <div ng-if="eventController.state.actions === 'true'">
+        <actions actions="eventController.event.actions" templates = eventController.templates  ></actions>
+    </div>
+    <div ng-if="eventController.state.mapping  === 'true'">
+        event mapping
+    </div>
+</form>

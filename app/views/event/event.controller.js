@@ -5,7 +5,8 @@ eventsModule
         this.event = eventService.getEvent()
             .then(response => {
                 this.event = response;
-                console.log(222, response.actions)
             })
+
+    
 
     });
