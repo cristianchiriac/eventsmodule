@@ -4,10 +4,21 @@
         <dl class="rules-group-container">
             <dd class="rules-group-body">
                 <ul class="rules-list">
-                    <li class="rule-container" ng-repeat="source in event.key"
-                        ng-class="{'invalid': eventForm['key_query_' + $index].$invalid && eventForm.submitted}">
-                        <div add-new-source model="key" index="{{$index}}" rules="" group="point"
-                             ng-if="source.source"></div>
+                    <li class="rule-container" ng-repeat="source in notificationId.key">
+                        <div class="query-builder form-inline">
+                            <div class="fill">
+                                <div class="form-inline">
+                                    <div class="form-group grow">
+                                        <input type="text"  class="form-control" placeholder="Xpath" ng-model="source.point.query" required>
+                                    </div>
+                                    <div class="btn-group pull-right rule-actions">
+                                        <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i> Add data</a>
+
+                                        <a class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </dd>

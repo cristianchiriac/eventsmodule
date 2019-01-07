@@ -20,7 +20,6 @@
 
     <script src="app/component/event-action/eventAction.component.js"></script>
     <script src="app/views/data-mapping/dataMapping.controller.js"></script>
-
     <script src="app/views/home/home.controller.js"></script>
     <script src="app/views/event/event.controller.js"></script>
     <script src="app/views/eventslist/eventslist.controller.js"></script>
@@ -31,6 +30,8 @@
     <script src="app/component/notificationid/notificationid.component.js"></script>
     <script src="app/component/metadata/metadata.component.js"></script>
     <script src="app/directives/languages/languages.js"></script>
+    <script src="app/component/eventdefinition/definition.component.js"></script>
+    <script src="app/component/data-mapping/datamapping.component.js"></script>
 
   </head>
   <body>
@@ -97,7 +98,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Events</li>
+                <li class="breadcrumb-item"><a ui-sref="eventslist">Events</a></li>
               </ol>
             </nav>
           </div>

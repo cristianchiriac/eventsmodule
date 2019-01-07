@@ -1,20 +1,112 @@
+<div class="card event-edit">
+    <div class="card-block">
+        <form novalidation class="eventForm" name="eventForm" ng-submit="editEvent($event)">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div ng-if="eventController.state.source === 'true'">
+                        <notification-id key="eventController.event.key"></notification-id>
+                        <metadata metadata="eventController.event.metadata"></metadata>
+                        <event-definition definition="eventController.event.definition"></event-definition>
+                    </div>
+                    <div ng-if="eventController.state.actions === 'true'">
+                        <actions actions="eventController.event.actions" templates = eventController.templates  ></actions>
+                    </div>
+                    <div ng-if="eventController.state.mapping  === 'true'">
+                        <datamapping context="eventController.event.context"></datamapping>
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <div class="draft" sticky="sticky" offset="70">
+                        <div class="well bottom-fix">
+                            <div class="form-group">
+                                <div class="input-group bottom-fix"
+                                     ng-class="{'invalid': eventForm.eventName.$invalid && eventForm.submitted}">
+                                    <div class="input-group-addon">
+                                        <label for="eventName">Event name</label>
+                                    </div>
+                                    <input type="text" id="eventName" name="eventName" ng-model="event.name"
+                                           class="form-control" required>
+                                </div>
+                                <div class="input-group upload bottom-fix">
+                                    <label class="custom-file grow">
+                                        <span class="custom-file-control"></span>
+                                        <input type="file" fileread="vm.picFile" accept="application/xml" id="file"
+                                               name="file" class="custom-file-input">
+                                    </label>
+                                    <div class="input-group-btn">
+                                        <div class="tooltip-wrapper disabled" uib-tooltip="Select a file first!"
+                                             tooltip-enable="!vm.xmlFile" tooltip-placement="top">
+                                            <button type="button" ng-click="upload(vm.xmlFile); showTemplates == 1"
+                                                    class="upload btn btn-primary" ng-disabled="!vm.xmlFile">
+                                                Upload
+                                                <span class="fa fa-upload"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <textarea name="xml" id="xml" cols="30" rows="22" class="form-control"
+                                          ng-model="vm.xmlDoc" ng-if="showEvent"></textarea>
+                            </div>
+                            <div class="actions">
+                                <a ui-sref="app.events" class="btn btn-primary text">
+                                    Close
+                                </a>
+                                <div class="tooltip-wrapper disabled" tooltip-placement="top"
+                                     uib-tooltip="No changes to save" tooltip-enable="history==0">
+                                    <button
+                                            type="submit"
+                                            class="btn btn-primary text"
+                                            id="submitEvent"
+                                            ng-click="eventForm.submitted=true;"
+                                            ng-disabled="history==0"
+                                            authorization="true"
+                                            permissions="['event-write']">
+                                        <spinner></spinner>
+                                        Save
+                                    </button>
+                                </div>
+                                <button type="button" class="btn btn-primary text"
+                                        ng-click="testEvent(vm.xmlDoc,$event)" ng-disabled="!event.slug"
+                                        ng-if="vm.xmlDoc">
+                                    <spinner></spinner>
+                                    Test event
+                                </button>
+                                <back-to location="app.events"></back-to>
+                            </div>
+                        </div>
+                        <div class="well" ng-if="isDirty">
+                            <h4 class="small bottom-fix">Draft version available</h4>
+                            <div class="actions">
+                                <button
+                                        type="button"
+                                        class="btn btn-success"
+                                        ng-click="publish()"
+                                        authorization="true"
+                                        permissions="['event-publish']">
+                                    <i class="fa fa-check-square"></i>
+                                    Publish
+                                </button>
+                                <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                        ng-click="discard()"
+                                        authorization="true"
+                                        permissions="['event-publish']">
+                                    <i class="fa fa-trash"></i>
+                                    Discard changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
 <a ui-sref="event({source:true, actions: false, mapping: false})">DEFINITION</a>
 <a ui-sref="event({source:false, actions: true, mapping: false})">ACTIONS</a>
 <a ui-sref="event({source:false, actions: false, mapping: true})">DATA MAPPING</a>
 
-<br>
 
-
-<br>
-<form novalidation class="eventForm" name="eventForm" ng-submit="editEvent($event)">
-
-    <div ng-if="eventController.state.source === 'true'">
-        event source
-    </div>
-    <div ng-if="eventController.state.actions === 'true'">
-        <actions actions="eventController.event.actions" templates = eventController.templates  ></actions>
-    </div>
-    <div ng-if="eventController.state.mapping  === 'true'">
-        event mapping
-    </div>
-</form>
