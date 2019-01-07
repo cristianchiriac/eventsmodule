@@ -12,6 +12,7 @@ eventsModule
                 templateUrl: 'app/views/eventslist/eventslist.controller.html',
                 controller: 'eventslistController as ctrl'
             })
+
             .state('event', {
                 url: '/event?source&actions&mapping',
                 templateUrl: 'app/views/event/event.controller.html',

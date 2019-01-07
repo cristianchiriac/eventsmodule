@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="well bottom-fix actions col-sm-8">
+        <h4>
+            Actions
+        </h4>
+
+        <div class="builders actions">
+            <div class="builder ng-scope" ng-repeat="item in ctrlActions.actions">
+                <event-action  item="item" templates = "ctrlActions.templates" documents = "ctrlActions.documents" files="ctrlActions.files"></event-action>
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Add action</button>
+    </div>
+    <div class="col-sm-4"></div>
+</div>

@@ -9,7 +9,7 @@
                         <event-definition definition="eventController.event.definition"></event-definition>
                     </div>
                     <div ng-if="eventController.state.actions === 'true'">
-                        action
+                        <actions actions="eventController.event.actions" templates = eventController.templates  ></actions>
                     </div>
                     <div ng-if="eventController.state.mapping  === 'true'">
                         <datamapping context="eventController.event.context"></datamapping>
