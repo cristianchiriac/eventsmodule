@@ -8,10 +8,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="app/assets/css/style.css">
     <script src="app/libs/angular.js"></script>
+    <script src="app/assets/vendor/ng-scrollbars/src/scrollbars.js"></script>
     <script src="app/libs/angular-ui-router.js"></script>
+    <script src="app/libs/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="app/libs/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
+
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>
+    <script src="app/component/actions/actions.component.js"></script>
+    <script src="app/component/conditions/conditions.component.js"></script>
+    <script src="app/component/documents/documents.component.js"></script>
 
+
+    <script src="app/component/event-action/eventAction.component.js"></script>
     <script src="app/views/home/home.controller.js"></script>
     <script src="app/views/event/event.controller.js"></script>
     <script src="app/views/eventslist/eventslist.controller.js"></script>
@@ -21,9 +30,10 @@
     <script src="app/component/list/event.component.js"></script>
     <script src="app/component/notificationid/notificationid.component.js"></script>
     <script src="app/component/metadata/metadata.component.js"></script>
+    <script src="app/directives/languages/languages.js"></script>
     <script src="app/component/eventdefinition/definition.component.js"></script>
     <script src="app/component/data-mapping/datamapping.component.js"></script>
-    <script src="app/component/field-data-mapping/field.data.mapping.component.js"></script>
+    <!-- <script src="app/component/field-data-mapping/field.data.mapping.component.js"></script> -->
 
   </head>
   <body>
@@ -87,12 +97,9 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class=" pt-4">
-            <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
-                <li class="breadcrumb-item"><a ui-sref="eventslist">Events</a></li>
+                  <ncy-breadcrumb></ncy-breadcrumb>
               </ol>
-            </nav>
           </div>
 
         <ui-view></ui-view>

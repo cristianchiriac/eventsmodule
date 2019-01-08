@@ -1,4 +1,4 @@
 eventsModule
-    .controller('homeController', [function(){
-
-    }]);
+    .controller('homeController', function(){
+       
+    });
