@@ -8,8 +8,9 @@ eventsModule
             onActionRemove: '&'
         },
         templateUrl: "app/component/event-action/event-action.component.html",
+        
         controller: function ($scope, countries) {
-            
+          
             this.languages = countries
 
             this.languageSelect = {

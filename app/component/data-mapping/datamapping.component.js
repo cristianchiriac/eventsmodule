@@ -5,7 +5,10 @@ eventsModule
         },
         templateUrl: 'app/component/data-mapping/datamapping.component.html',
         controller: function() {
-            console.log(this.context);
+            this.$onInit = () => {
+
+            }            
+
         },
-        controllerAs: 'dataMapping'
+        controllerAs: 'dataMappingCtrl'
     } )

@@ -1,8 +1,7 @@
 eventsModule
     .component('eventDefinition', {
         bindings: {
-            definition:'<',
-            rules:'<'
+            definition:'<'
         },
         templateUrl: 'app/component/eventdefinition/definition.component.html',
         controllerAs:'eventDefinition'

@@ -4,7 +4,7 @@ eventsModule
             actions: "<"
         },
         templateUrl: "app/component/actions/actions.component.html",
-        controller: function (eventService) {
+        controller: function (eventService, $stateParams ) {
 
             this.templates = eventService.getTemplates()
                 .then(response => {

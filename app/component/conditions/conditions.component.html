@@ -1,78 +1,81 @@
-<dl class="rules-group-container">
-    <dt class="rules-group-header">
-        <div class="btn-group group-conditions" 
-            ng-if="conditionCtrl.model.rules.length >= 1">
-            <label class="btn btn-xs btn-primary " 
-                    ng-class="{ 'active' : (conditionCtrl.model.condition | uppercase) === 'AND', 'disabled': conditionCtrl.model.rules.length < 2}">
-                <input type="radio" 
-                    value="AND" 
-                    name="x_cond"
-                    ng-model="conditionCtrl.model.condition" 
-                    ng-disabled="conditionCtrl.model.rules.length < 2"
-                    > 
-                        AND
-            </label>
-            <label class="btn btn-xs btn-primary"
-                    ng-class="{'active' : (conditionCtrl.model.condition | uppercase) === 'OR', 'disabled': conditionCtrl.model.rules.length < 2}" >
-                <input type="radio"
-                    value="OR" 
-                    ng-model="conditionCtrl.model.condition" 
-                    name="x_cond" 
-                    ng-disabled="conditionCtrl.model.rules.length < 2"
-                    > 
-                        OR 
-            </label>
-        </div>
-        <div class="pull-right rule-actions">
-            <a class="btn btn-xs btn-success"
-                ng-click="addRule(object.rules, true)" 
-                >
-                <span class="fas fa-plus"></span> 
-                    Add rule
-            </a>
-            <a class="btn btn-xs btn-success" 
-                ng-click="addGroup(object, 'rules')"
-                    >
-                    <span class="fas fa-plus-circle"></span> 
-                    Add group
-            </a>
-            
-        </div>
-    </dt>
-    <dd class="rules-group-body">
-        <ul class="rules-list">
-            <li class="rule-container" ng-repeat="item in conditionCtrl.model.rules" >
-                <div class="pull-right rule-actions">  
-                    <a class="btn btn-xs btn-danger" 
-                        ng-click="conditionCtrl.deleteCondition($index)" 
-                        ng-if="conditionCtrl.model.rules.length > 1 "> 
-                        <span class="fa fa-trash"></span> Delete
-                    </a>
-                </div>
-                <div class="form-inline" ng-if="!item.rules">
-                    <div class="form-group grow">
-                        <input type="text" class="form-control" placeholder="Xpath" ng-model="item.xpath" required>
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control" 
-                            ng-options="operator as operator for operator in conditionCtrl.options"
-                            ng-model="item.operator" required>
-                            <option></option>
-                        </select>
-                    </div>
-                    <div class="form-group" 
-                        ng-show="item.operator !== 'EXISTS' && item.operator !== 'NOT_EXISTS'" >
-                        <input type="text" 
-                            class="form-control" 
-                            placeholder="Value" 
-                            ng-model="item.value" 
-                            ng-required="item.operator !== 'EXISTS' && item.operator !== 'NOT_EXISTS'"
-                            validate-condition="item">
-                    </div>
-                </div>
-                <conditions ng-if="item.rules" model="item" ></conditions>
-            </li>
-        </ul>
-    </dd>
-</dl>
-    
+<div class="query-builder form-inline">
+    <div class="fill">
+      <dl class="rules-group-container">
+          <dt class="rules-group-header">
+              <div class="btn-group group-conditions" 
+                  ng-if="conditionCtrl.model.rules.length >= 1">
+                  <label class="btn btn-xs btn-primary " 
+                          ng-class="{ 'active' : (conditionCtrl.model.condition | uppercase) === 'AND', 'disabled': conditionCtrl.model.rules.length < 2}">
+                      <input type="radio" 
+                          value="AND" 
+                          name="x_cond"
+                          ng-model="conditionCtrl.model.condition" 
+                          ng-disabled="conditionCtrl.model.rules.length < 2"
+                          > 
+                              AND
+                  </label>
+                  <label class="btn btn-xs btn-primary"
+                          ng-class="{'active' : (conditionCtrl.model.condition | uppercase) === 'OR', 'disabled': conditionCtrl.model.rules.length < 2}" >
+                      <input type="radio"
+                          value="OR" 
+                          ng-model="conditionCtrl.model.condition" 
+                          name="x_cond" 
+                          ng-disabled="conditionCtrl.model.rules.length < 2"
+                          > 
+                              OR 
+                  </label>
+              </div>
+              <div class="pull-right rule-actions">
+                  <a class="btn btn-xs btn-success"
+                      ng-click="addRule(object.rules, true)" 
+                      >
+                      <span class="fas fa-plus"></span> 
+                          Add rule
+                  </a>
+                  <a class="btn btn-xs btn-success" 
+                      ng-click="addGroup(object, 'rules')"
+                          >
+                          <span class="fas fa-plus-circle"></span> 
+                          Add group
+                  </a>
+
+              </div>
+          </dt>
+          <dd class="rules-group-body">
+              <ul class="rules-list">
+                  <li class="rule-container" ng-repeat="item in conditionCtrl.model.rules" >
+                      <div class="pull-right rule-actions">  
+                          <a class="btn btn-xs btn-danger" 
+                              ng-click="conditionCtrl.deleteCondition($index)" 
+                              ng-if="conditionCtrl.model.rules.length > 1 "> 
+                              <span class="fa fa-trash"></span> Delete
+                          </a>
+                      </div>
+                      <div class="form-inline" ng-if="!item.rules">
+                          <div class="form-group grow">
+                              <input type="text" class="form-control" placeholder="Xpath" ng-model="item.xpath" required>
+                          </div>
+                          <div class="form-group">
+                              <select class="form-control" 
+                                  ng-options="operator as operator for operator in conditionCtrl.options"
+                                  ng-model="item.operator" required>
+                                  <option></option>
+                              </select>
+                          </div>
+                          <div class="form-group" 
+                              ng-show="item.operator !== 'EXISTS' && item.operator !== 'NOT_EXISTS'" >
+                              <input type="text" 
+                                  class="form-control" 
+                                  placeholder="Value" 
+                                  ng-model="item.value" 
+                                  ng-required="item.operator !== 'EXISTS' && item.operator !== 'NOT_EXISTS'"
+                                  validate-condition="item">
+                          </div>
+                      </div>
+                      <conditions ng-if="item.rules" model="item" ></conditions>
+                  </li>
+              </ul>
+          </dd>
+      </dl>
+  </div>
+</div>

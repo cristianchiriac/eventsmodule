@@ -5,17 +5,15 @@
         <dl class="rules-group-container">
             <dd class="rules-group-body">
                 <ul class="rules-list">
-                    <li class="rule-container" ng-repeat="item in dataMapping.context">
+                    <li class="rule-container" ng-repeat="item in dataMappingCtrl.context">
                         <div class="rule-value-container">
                             <div class="form-inline">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <label>Source</label>
                                     </div>
-                                    <select class="form-control" name=""
-                                            ng-model="source.source"
-                                            ng-options="item as item for item in ['JMS','CAR']"
-                                            required>
+                                    <select class="form-control" name="" ng-model="source.source" ng-options="item as item for item in ['JMS','CAR']"
+                                        required>
                                     </select>
                                 </div>
                                 <div class="input-group" ng-if="source.source == 'CAR'">
@@ -31,52 +29,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a  class="btn btn-primary t-10"
-                           ng-show="source.points.length == 0" ng-if="source.source"><i
-                                class="glyphicon glyphicon-plus"></i> Add Data</a>
+                        <a class="btn btn-primary t-10" ng-show="source.points.length == 0" ng-if="source.source">
+                            <i class="glyphicon glyphicon-plus"></i> Add Data
+                        </a>
 
-                        <ul class="rules-list">
-                            <li class="rule-container" ng-repeat="(key,value) in item.points">
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name" ng-model="key">
-                                    </div>
-                                    <div class="form-group grow">
-                                        <input type="text" class="form-control" placeholder="Xpath" ng-model="value.query">
-                                    </div>
-                                    <div class="form-element">
-                                        <select class="form-control"  name="" ng-options="type as type for type in ['STRING_VALUE', 'STRING_LIST', 'OBJECT_VALUE', 'OBJECT_LIST']" ng-model="value.value"></select>
-                                    </div>
-                                    <div class="btn-group pull-right rule-actions">
-                                        <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i> Add data</a>
-                                        <a class="btn btn-danger">Delete</a>
-                                    </div>
-                                    <!---->
-                                    <div class="pt-2" ng-if="value.value === 'OBJECT_LIST'">
-                                        <ul class="rules-list">
-                                            <li class="rule-container" ng-repeat="(key,value) in value.fields">
-                                                <div class="form-inline">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Name" ng-model="key">
-                                                    </div>
-                                                    <div class="form-group grow">
-                                                        <input type="text" class="form-control" placeholder="Xpath" ng-model="value.query">
-                                                    </div>
-                                                    <div class="form-element">
-                                                        <select class="form-control"  name="" ng-options="type as type for type in ['STRING_VALUE', 'STRING_LIST', 'OBJECT_VALUE', 'OBJECT_LIST']" ng-model="value.value"></select>
-                                                    </div>
-                                                    <div class="btn-group pull-right rule-actions">
-                                                        <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i> Add data</a>
-                                                        <a class="btn btn-danger">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!---->
-                                </div>
-                            </li>
-                        </ul>
+                        <mappingobject fields="item.points"></mappingobject>
+
                     </li>
                 </ul>
             </dd>

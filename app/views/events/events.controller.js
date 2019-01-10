@@ -1,8 +1,9 @@
 eventsModule
-    .controller('eventslistController', function(eventsListObject){
+    .controller('eventsController', function(eventsListObject){
+        
             this.list = eventsListObject.getList()
                 .then(response => {
-                    this.list=response;
+                    this.list = response;
                 }
         )
     });
