@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <title>REA</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="app/assets/css/style.css">
     <script src="app/libs/angular.js"></script>
     <script src="app/assets/vendor/ng-scrollbars/src/scrollbars.js"></script>
     <script src="app/libs/angular-ui-router.js"></script>
-    <script src="app/libs/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="app/libs/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="app/libs/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
 
     <script src="app/app.js"></script>
@@ -21,9 +20,11 @@
 
 
     <script src="app/component/event-action/eventAction.component.js"></script>
+    <script src="app/component/data-mapping/datamapping.component.js"></script>
+
     <script src="app/views/home/home.controller.js"></script>
     <script src="app/views/event/event.controller.js"></script>
-    <script src="app/views/eventslist/eventslist.controller.js"></script>
+    <script src="app/views/events/events.controller.js"></script>
     <script src="app/service/eventslistobject.js"></script>
     <script src="app/service/eventService.js"></script>
 
@@ -32,8 +33,7 @@
     <script src="app/component/metadata/metadata.component.js"></script>
     <script src="app/directives/languages/languages.js"></script>
     <script src="app/component/eventdefinition/definition.component.js"></script>
-    <script src="app/component/data-mapping/datamapping.component.js"></script>
-    <!-- <script src="app/component/field-data-mapping/field.data.mapping.component.js"></script> -->
+    <script src="app/component/mapping-object/mappingobject.component.js"></script>
 
   </head>
   <body>
@@ -56,7 +56,7 @@
                 <h5 class="text-light"> EVENT MANAGER </h5>
               </li>
               <li class="nav-item">
-                <a class="nav-link" ui-sref="eventslist">
+                <a class="nav-link" ui-sref="events">
                   <i class="far fa-edit"></i>
                   Events
                 </a>
@@ -108,13 +108,13 @@
 
     </div>
   </div>
-
+<!-- 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script> -->
 
 
 </body>

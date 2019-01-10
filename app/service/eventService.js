@@ -45,6 +45,11 @@ eventsModule
                                 "xpath": "/NotificationMessage/messageType",
                                 "operator": "EQUAL",
                                 "value": "SHIP_CONF_1"
+                            },
+                            {
+                                "xpath": "/NotificationMessage/payload/Shipments/Shipment/@LevelOfService",
+                                "operator": "EQUAL",
+                                "value": "MSH_SAMEDAY_DEL"
                             }
                         ]
                     },

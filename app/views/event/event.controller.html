@@ -7,12 +7,16 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div ng-if="eventController.state.source === 'true'">
-                        <notification-id key="eventController.event.key"></notification-id>
+                        <notification-id  key="eventController.event.key"></notification-id>
                         <metadata metadata="eventController.event.metadata"></metadata>
-                        <event-definition definition="eventController.event.definition"></event-definition>
+                        <div class="well bottom-fix">
+                            <h4>Definition</h4>
+                            <conditions model="eventController.event.definition"></conditions>
+
+                        </div>
                     </div>
                     <div ng-if="eventController.state.actions === 'true'">
-                        <actions actions="eventController.event.actions" templates = eventController.templates  ></actions>
+                        <actions actions="eventController.event.actions"></actions>
                     </div>
                     <div ng-if="eventController.state.mapping  === 'true'">
                         <datamapping context="eventController.event.context"></datamapping>

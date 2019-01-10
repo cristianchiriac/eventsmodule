@@ -8,11 +8,8 @@ eventsModule
         },
         templateUrl: "app/component/event-action/event-action.component.html",
         
-        controller: function ($scope, countries, $breadcrumb) {
-            console.group(23333333333333333333)
+        controller: function ($scope, countries) {
 
-
-            // console.log(1111111111, $breadcrumbsProvider.getStatesChain())
             this.languages = countries
             this.pdfVersions = [];
             this.g = 6
