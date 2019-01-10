@@ -19,6 +19,10 @@ eventsModule
                 .then(response => {
                     this.files = response;
                 })
+
+            this.removeAction = (index) => {
+                this.actions.splice(index, 1)
+            }
         },
         controllerAs: "ctrlActions"
     });
