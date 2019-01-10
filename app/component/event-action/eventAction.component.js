@@ -4,49 +4,20 @@ eventsModule
             item: "<",
             templates: "<",
             documents: "<",
-            files: "<"
+            files: "<",
+            onActionRemove: '&'
         },
         templateUrl: "app/component/event-action/event-action.component.html",
         controller: function ($scope, countries) {
+            
             this.languages = countries
-            this.pdfVersions = [];
-            this.g = 6
-            // // watchers 
-            this.$onInit = () => {
-                console.log(444, this.languages)
-
-                if (this.item.type == "EMAIL" && !this.item.attachments)
-                    this.item.attachments = [];
-
-                $scope.$watch('templates',  (newValue, oldValue) => {
-                    this.updateVersionsAndType(this.item.template, this.templates);
-                });
-
-                $scope.$watch('item.template.version', (newValue, oldValue) =>{
-                    if (oldValue !== newValue && this.item.template.version != null)
-                        $scope.$emit('templateChanged');
-                });
-
-                
-                this.updateVersionsAndType = (selectedTemplate, existingTemplates) => {
-                    if (existingTemplates) {
-                        existingTemplates.forEach((template) => {
-                            if (selectedTemplate.slug == template.slug) {
-                                this.templateVersions = template.versions;
-                                console.log(2, template.slug)
-                                // if SMS set item.type as SMS
-                                this.item.type = (template.isSms !== undefined && template.isSms === true)? "SMS":"EMAIL";
-                            }
-                        });
-                    }
-                }
-
-            }
 
             this.languageSelect = {
                 isOpen: false,
                 key: ''
             };
+
+            this.templateVersions = []
 
             $scope.scrollbarsConfig = {
                 autoHideScrollbar: false,
@@ -59,26 +30,36 @@ eventsModule
                 setHeight: 300,
             };
 
-            this.setLanguage = (language, item, isopen) => {
-                item.defaultLocale = language;
-                this.languageSelect.isOpen = false;
-                this.languageSelect.key = '';
-            };
+            this.updateVersionsAndType = (selectedTemplate) => {
+                let existingTemplates = this.templates;
 
-            this.clear = ($event) => {
-                $event.preventDefault();
-                $event.stopPropagation();
-                this.languageSelect.key = '';
-            };
+                if (existingTemplates) {
+                    existingTemplates.forEach((template) => {
+                        if (selectedTemplate.slug == template.slug) {
+                            this.templateVersions = template.versions;
+                        }
+                    });
+                }
+            }
+            
+            this.deleteAction = () => {
+                this.onActionRemove();
+            }
+            this.removeDocument = (index) => {
+                this.item.attachments.splice(index,1);
+            }
 
-            this.addDocuments = () => {
-                var attachment = {
-                    type: 'URL'
-                };
-                this.item.attachments.push(attachment);
-            };
-          
+            this.$onInit = () => {
+                this.recipients = {
+                    'To': this.item.to,
+                    'BCC': this.item.bcc,
+                    'CC': this.item.cc
+                }
+            }
+
+        
+
         },
-        controllerAs:"actionCtrl"
+        controllerAs: "actionCtrl"
 
     });

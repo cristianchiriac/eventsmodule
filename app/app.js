@@ -1,6 +1,7 @@
 let eventsModule = angular
   .module('eventsModule',[
       'ui.router',
-      'ui.bootstrap'
+      'ui.bootstrap',
+      // 'ngScrollbars'
       ])
 

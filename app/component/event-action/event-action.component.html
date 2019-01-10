@@ -3,18 +3,24 @@
         <div class="input-group-addon">
             <label >Template</label>
         </div>
-        <select ng-if="actionCtrl.templates" class="form-control" ng-model="actionCtrl.item.template.slug" ng-options="template.slug as template.name for template in actionCtrl.templates">
+        <select ng-if="actionCtrl.templates" 
+                class="form-control" 
+                ng-model="actionCtrl.item.template.slug" 
+                ng-options="template.slug as template.name for template in actionCtrl.templates"
+                ng-init ="actionCtrl.updateVersionsAndType(actionCtrl.item.template)"
+                ng-change="actionCtrl.updateVersionsAndType(actionCtrl.item.template)">
             <option value=""></option>
         </select>
     </div>
     <div class="input-group appear">
-        <select class="form-control" ng-model="actionCtrl.item.template.version" ng-options="version as version for version in actionCtrl.templateVersions"
-            >
+        <select class="form-control" 
+                ng-model="actionCtrl.item.template.version" 
+                ng-options="version as version for version in actionCtrl.templateVersions">
             <option value=""></option>
         </select>
     </div>
     <div class="form-group">
-        <a class="btn btn-danger">
+        <a class="btn btn-danger" ng-click="actionCtrl.deleteAction()">
             <span class="fa fa-trash"></span>
             Delete
         </a>
@@ -24,30 +30,36 @@
     <dl class="rules-group-container">
         <dd class="rules-group-body">
             <ul class="rules-list">
-                <li class="rule-container appear" ng-class="{'invalid': eventForm['action_' + $index + '_language'].$invalid && eventForm.submitted}">
+                <li class="rule-container appear" >
                     <div class="form-inline bottom-fix">
-                        <div class="input-group" ng-class="{'invalid': eventForm['action_' + $index + '_language'].$invalid && eventForm.submitted}">
+                        <div class="input-group" >
                             <div class="input-group-addon">
-                                <label for="action_{{$index}}_language">Language</label>
+                                <label >Language</label>
                             </div>
-                            <input type="text" id="action_{{$index}}_language" name="action_{{$index}}_language" class="form-control"
-                                ng-model="actionCtrl.item.locale[0].point.query" required>
+                            <input type="text" 
+                                   class="form-control"
+                                   ng-model="actionCtrl.item.locale[0].point.query" required>
                         </div>
-                        <div class="input-group" ng-class="{'invalid': eventForm['action_' + $index + '_language'].$invalid && eventForm.submitted}">
+                        <div class="input-group">
                             <div class="input-group-addon">
-                                <label for="action_{{$index}}_country">Country</label>
+                                <label>Country</label>
                             </div>
-                            <input type="text" id="action_{{$index}}_country" name="action_{{$index}}_country" class="form-control"
-                                ng-model="actionCtrl.item.locale[1].point.query" required>
+                            <input type="text" 
+                                   class="form-control"
+                                   ng-model="actionCtrl.item.locale[1].point.query" required>
                         </div>
-                        <div class="input-group" ng-class="{'invalid': eventForm['action_' + $index + '_language'].$invalid && eventForm.submitted}">
+                        <div class="input-group" >
                             <div class="input-group-addon">
                                 <label for="action_{{$index}}_defaultLocale">DEFAULT LOCALE</label>
                             </div>
                             <div class="languages">
-                                <div uib-dropdown auto-close="outsideClick" is-open="actionCtrl.languageSelect.isOpen"
-                                    toggle-action="showNewLanguages = !showNewLanguages;" class="languages" >
-                                    <a href id="available-languages" class="selected-language" uib-dropdown-toggle>
+                                <div class="languages" 
+                                     uib-dropdown auto-close="outsideClick" 
+                                     is-open="actionCtrl.languageSelect.isOpen"
+                                     toggle-action="showNewLanguages = !showNewLanguages;"
+                                     >
+                                    <a href id="available-languages" 
+                                       class="selected-language" uib-dropdown-toggle>
                                         {{actionCtrl.item.defaultLocale}}
                                     </a>
 
@@ -61,7 +73,8 @@
                                             No results found for: {{actionCtrl.languageSelect.key}}
                                         </div>
                                         <div ng-scrollbars ng-scrollbars-config="scrollbarsConfig">
-                                            <div class="item" ng-repeat="language in actionCtrl.languages | filter: actionCtrl.languageSelect.key as result"
+                                            <div class="item" 
+                                                ng-repeat="language in actionCtrl.languages | filter: actionCtrl.languageSelect.key as result"
                                                 ng-click="actionCtrl.setLanguage(language.language, actionCtrl.item, actionCtrl.languageSelect.isOpen)">
                                                 <a>{{language.country}}: {{language.language}}</a>
                                             </div>
@@ -72,128 +85,44 @@
                         </div>
                     </div>
                 </li>
-                <li class="rule-container" ng-class="{
-                  'invalid': eventForm.submitted && ((eventForm['action_' + $index + '_to_source'].$invalid || eventForm['action_' + $index + '_to_outlet'].$invalid || eventForm['action_' + $index + '_to_xpath'].$invalid || eventForm['action_' + $index + '_to_type'].$invalid)
-                 && (eventForm['action_' + $index + '_bcc_source'].$invalid || eventForm['action_' + $index + '_bcc_outlet'].$invalid || eventForm['action_' + $index + '_bcc_xpath'].$invalid || eventForm['action_' + $index + '_bcc_type'].$invalid)
-                 && (eventForm['action_' + $index + '_cc_source'].$invalid || eventForm['action_' + $index + '_cc_outlet'].$invalid || eventForm['action_' + $index + '_cc_xpath'].$invalid || eventForm['action_' + $index + '_cc_type'].$invalid))
-                }">
-                    <div class="rule-value-container">
+                <li class="rule-container" >
+                    <div class="rule-value-container" ng-repeat="(key, val) in actionCtrl.recipients">
                         <span class="title">
-                            To definition
+                           {{key }}
                         </span>
                         <div class="form-inline bottom-fix">
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_to_source'].$invalid && (eventForm['action_' + $index + '_to_outlet'].$valid || eventForm['action_' + $index + '_to_xpath'].$valid || eventForm['action_' + $index + '_to_type'].$valid))) && eventForm.submitted}">
+                            <div class="input-group" >
                                 <div class="input-group-addon">
-                                    <label for="action_{{$index}}_to_source">Source</label>
+                                    <label>Source</label>
                                 </div>
-                                <select class="form-control" name="action_{{$index}}_to_source" id="action_{{$index}}_to_source"
-                                    ng-model="actionCtrl.item.to.source" ng-options="item as item for item in ['JMS','CAR']"
-                                    ng-required="!(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
+                                <select class="form-control"
+                                    ng-model="val.source" 
+                                    ng-options="item as item for item in ['JMS','CAR']"
+                                   >
                                     <option></option>
                                 </select>
                             </div>
-                            <div class="input-group" ng-if="actionCtrl.item.to.source == 'CAR'" ng-class="{'invalid':((eventForm['action_' + $index + '_to_outlet'].$invalid && (eventForm['action_' + $index + '_to_source'].$valid || eventForm['action_' + $index + '_to_xpath'].$valid || eventForm['action_' + $index + '_to_type'].$valid))) && eventForm.submitted}">
+                            <div class="input-group" ng-if="val.source == 'CAR'" >
                                 <div class="input-group-addon">
-                                    <label for="action_{{$index}}_to_outlet">Outlet ID xpath</label>
+                                    <label >Outlet ID xpath</label>
                                 </div>
-                                <input type="text" name="action_{{$index}}_to_outlet" id="action_{{$index}}_to_outlet"
-                                    class="form-control" ng-model="actionCtrl.item.to['outlet']" ng-required="!(actionCtrl.item.bcc.source && item.bcc['outlet'] && item.bcc.point.query && item.bcc.point.value) && !(item.cc.source && item.cc['outlet'] && item.cc.point.query && item.cc.point.value)">
+                                <input type="text"
+                                    class="form-control" ng-model="val['outlet']" >
                             </div>
-                            <div class="input-group grow" ng-class="{'invalid': ((eventForm['action_' + $index + '_to_xpath'].$invalid && (eventForm['action_' + $index + '_to_outlet'].$valid || eventForm['action_' + $index + '_to_source'].$valid || eventForm['action_' + $index + '_to_type'].$valid))) && eventForm.submitted}">
+                            <div class="input-group grow">
                                 <div class="input-group-addon">
-                                    <label for="action_{{$index}}_to_xpath">Xpath</label>
+                                    <label >Xpath</label>
                                 </div>
-                                <input type="text" class="form-control" name="action_{{$index}}_to_xpath" id="action_{{$index}}_to_xpath"
-                                    class="form-control" ng-model="actionCtrl.item.to.point.query" ng-required="!(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
+                                <input type="text" class="form-control" 
+                                    class="form-control" ng-model="val.point.query" >
                             </div>
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_to_type'].$invalid && (eventForm['action_' + $index + '_to_source'].$valid || eventForm['action_' + $index + '_to_xpath'].$valid || eventForm['action_' + $index + '_to_outlet'].$valid))) && eventForm.submitted}">
+                            <div class="input-group">
                                 <div class="input-group-addon">
-                                    <label for="action_{{$index}}_to_type">Type</label>
+                                    <label> Type</label>
                                 </div>
-                                <select name="action_{{$index}}_to_type" id="action_{{$index}}_to_type" class="form-control"
-                                    ng-model="actionCtrl.item.to.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
-                                    ng-required="!(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
-                                    <option></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rule-value-container">
-                        <span class="title">
-                            BCC definition
-                        </span>
-                        <div class="form-inline bottom-fix">
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_bcc_source'].$invalid && (eventForm['action_' + $index + '_bcc_outlet'].$valid || eventForm['action_' + $index + '_bcc_xpath'].$valid || eventForm['action_' + $index + '_bcc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_bcc_source">Source</label>
-                                </div>
-                                <select class="form-control" name="action_{{$index}}_bcc_source" id="action_{{$index}}_bcc_source"
-                                    ng-model="actionCtrl.item.bcc.source" ng-options="item as item for item in ['JMS','CAR']">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="input-group " ng-if="item.bcc.source == 'CAR'" ng-class="{'invalid':((eventForm['action_' + $index + '_bcc_outlet'].$invalid && (eventForm['action_' + $index + '_bcc_source'].$valid || eventForm['action_' + $index + '_bcc_xpath'].$valid || eventForm['action_' + $index + '_bcc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_bcc_outlet">Outlet ID xpath</label>
-                                </div>
-                                <input type="text" name="action_{{$index}}_bcc_outlet" id="action_{{$index}}_bcc_outlet"
-                                    class="form-control" ng-model="actionCtrl.item.bcc['outlet']" ng-required="!(actionCtrl.item.to.source && actionCtrl.item.to['outlet'] && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc['outlet'] && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
-                            </div>
-                            <div class="input-group grow" ng-class="{'invalid': ((eventForm['action_' + $index + '_bcc_xpath'].$invalid && (eventForm['action_' + $index + '_bcc_outlet'].$valid || eventForm['action_' + $index + '_bcc_source'].$valid || eventForm['action_' + $index + '_bcc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_bcc_xpath">Xpath</label>
-                                </div>
-                                <input type="text" class="form-control" name="action_{{$index}}_bcc_xpath" id="action_{{$index}}_bcc_xpath"
-                                    class="form-control" ng-model="actionCtrl.item.bcc.point.query" ng-required="!(actionCtrl.item.to.source && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
-                            </div>
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_bcc_type'].$invalid && (eventForm['action_' + $index + '_bcc_source'].$valid || eventForm['action_' + $index + '_bcc_xpath'].$valid || eventForm['action_' + $index + '_bcc_outlet'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_bcc_type">Type</label>
-                                </div>
-                                <select name="action_{{$index}}_bcc_type" id="action_{{$index}}_bcc_type" class="form-control"
-                                    ng-model="actionCtrl.item.bcc.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
-                                    ng-required="!(actionCtrl.item.to.source && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.cc.source && actionCtrl.item.cc.point.query && actionCtrl.item.cc.point.value)">
-                                    <option></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rule-value-container">
-                        <span class="title">
-                            CC definition
-                        </span>
-                        <div class="form-inline bottom-fix">
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_cc_source'].$invalid && (eventForm['action_' + $index + '_cc_outlet'].$valid || eventForm['action_' + $index + '_cc_xpath'].$valid || eventForm['action_' + $index + '_cc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_cc_source">Source</label>
-                                </div>
-                                <select class="form-control" name="action_{{$index}}_cc_source" id="action_{{$index}}_cc_source"
-                                    ng-model="actionCtrl.item.cc.source" ng-options="item as item for item in ['JMS','CAR']"
-                                    ng-required="!(actionCtrl.item.to.source && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value)">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="input-group" ng-if="item.cc.source == 'CAR'" ng-class="{'invalid':((eventForm['action_' + $index + '_cc_outlet'].$invalid && (eventForm['action_' + $index + '_cc_source'].$valid || eventForm['action_' + $index + '_cc_xpath'].$valid || eventForm['action_' + $index + '_cc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_cc_outlet">Outlet ID xpath</label>
-                                </div>
-                                <input type="text" name="action_{{$index}}_cc_outlet" id="action_{{$index}}_cc_outlet"
-                                    class="form-control" ng-model="actionCtrl.item.cc['outlet']" ng-required=" !(actionCtrl.item.to.source && actionCtrl.item.to['outlet'] && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.bcc.source && actionCtrl.item.bcc['outlet'] && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value)">
-                            </div>
-                            <div class="input-group grow" ng-class="{'invalid': ((eventForm['action_' + $index + '_cc_xpath'].$invalid && (eventForm['action_' + $index + '_cc_outlet'].$valid || eventForm['action_' + $index + '_cc_source'].$valid || eventForm['action_' + $index + '_cc_type'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_cc_xpath">Xpath</label>
-                                </div>
-                                <input type="text" class="form-control" name="action_{{$index}}_cc_xpath" id="action_{{$index}}_cc_xpath"
-                                    class="form-control" ng-model="actionCtrl.item.cc.point.query" ng-required="!(actionCtrl.item.to.source && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value)">
-                            </div>
-                            <div class="input-group" ng-class="{'invalid': ((eventForm['action_' + $index + '_cc_type'].$invalid && (eventForm['action_' + $index + '_cc_source'].$valid || eventForm['action_' + $index + '_cc_xpath'].$valid || eventForm['action_' + $index + '_cc_outlet'].$valid))) && eventForm.submitted}">
-                                <div class="input-group-addon">
-                                    <label for="action_{{$index}}_cc_type">Type</label>
-                                </div>
-                                <select name="action_{{$index}}_cc_type" id="action_{{$index}}_cc_type" class="form-control"
-                                    ng-model="actionCtrl.item.cc.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
-                                    ng-required=" !(actionCtrl.item.to.source && actionCtrl.item.to.point.query && actionCtrl.item.to.point.value) && !(actionCtrl.item.bcc.source && actionCtrl.item.bcc.point.query && actionCtrl.item.bcc.point.value) ">
+                                <select class="form-control"
+                                    ng-model="val.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
+                                    >
                                     <option></option>
                                 </select>
                             </div>
@@ -202,13 +131,17 @@
                 </li>
                 <li class="rule-container appear" ng-hide="actionCtrl.item.type == 'SMS'">
                     <span class="title block">Attachments</span>
-                    <button type="button" ng-click="addDocuments()" class="btn btn-primary" ng-show="actionCtrl.item.attachments && actionCtrl.item.attachments.length <= 0"><i
-                            class="fa fa-plus"></i> Add attachments </button>
+                    <button type="button"  class="btn btn-primary" >
+                        <i class="fa fa-plus"></i> Add attachments </button>
                     <dl class="rules-group-container">
                         <dd class="rules-group-body">
                             <ul class="rules-list">
-                                <documents ng-repeat="document in actionCtrl.item.attachments track by $index" document="document"
-                                    files="actionCtrl.files" documents="actionCtrl.documents" object="item"></documents>
+                                <documents ng-repeat="document in actionCtrl.item.attachments track by $index" 
+                                    on-document-remove="actionCtrl.removeDocument($index)"
+                                    document="document"
+                                    files="actionCtrl.files" 
+                                    documents="actionCtrl.documents" 
+                                    object="item"></documents>
                             </ul>
                         </dd>
                     </dl>
