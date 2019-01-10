@@ -14,7 +14,9 @@
             <div class="btn-group pull-right rule-actions">
                 <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i>
                     Add data</a>
-                <a class="btn btn-danger">Delete</a>
+                <a class="btn btn-danger"
+                    ng-click="mappingCtrl.removeMappingObject(key)"
+                >Delete</a>
             </div>
             <div class="pt-2" ng-if="value.value === 'OBJECT_LIST'">
                 <mappingobject fields="value.fields"></mappingobject>

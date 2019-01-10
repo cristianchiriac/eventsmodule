@@ -4,7 +4,7 @@
         <dl class="rules-group-container">
             <dd class="rules-group-body">
                 <ul class="rules-list">
-                    <li class="rule-container" ng-repeat="source in notificationId.key">
+                    <li class="rule-container" ng-repeat="source in notificationIdCtrl.key">
                         <div class="query-builder form-inline">
                             <div class="fill">
                                 <div class="form-inline">
@@ -12,9 +12,12 @@
                                         <input type="text"  class="form-control" placeholder="Xpath" ng-model="source.point.query" required>
                                     </div>
                                     <div class="btn-group pull-right rule-actions">
-                                        <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i> Add data</a>
+                                        <a class="btn btn-xs btn-success" ng-if="$last"><span class="fas fa-plus fa-xs"></span> Add data</a>
 
-                                        <a class="btn btn-danger">Delete</a>
+                                        <a class="btn btn-xs btn-danger"
+                                            ng-click = notificationIdCtrl.remove($index)>
+                                            <span class="fa fa-trash fa-xs"></span> Delete
+                                        </a>
                                     </div>
                                 </div>
                             </div>
