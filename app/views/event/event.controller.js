@@ -8,3 +8,4 @@ eventsModule
                 this.event = response;
             })
 
+    })
