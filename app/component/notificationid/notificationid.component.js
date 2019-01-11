@@ -8,10 +8,22 @@ eventsModule
 
             this.$onInit = () => {
                 this.remove = (index) => {
-                    this.key.splice(index,1)
-                }            }
+                    this.key.splice(index, 1)
+                }
 
- 
+                this.addEmptyRule = () => {
+                    let newKey ={
+                        "source": "JMS",
+                        "point": {
+                            "value": "STRING_VALUE",
+                            "query": ""
+                        }
+                    }
+                    this.key.unshift(newKey)
+                }
+            }
+
+
 
         },
         controllerAs: 'notificationIdCtrl'

@@ -1,160 +1,162 @@
-<div class="form-inline">
-    <div class="input-group appear">
-        <div class="input-group-addon">
-            <label >Template</label>
+<div class="well bottom-fix">
+    <div class="form-inline">
+        <div class="input-group appear">
+            <div class="input-group-addon">
+                <label >Template</label>
+            </div>
+            <select ng-if="actionCtrl.templates" 
+                    class="form-control" 
+                    ng-model="actionCtrl.item.template.slug" 
+                    ng-options="template.slug as template.name for template in actionCtrl.templates"
+                    ng-init ="actionCtrl.updateVersionsAndType(actionCtrl.item.template)"
+                    ng-change="actionCtrl.updateVersionsAndType(actionCtrl.item.template)">
+                <option value=""></option>
+            </select>
         </div>
-        <select ng-if="actionCtrl.templates" 
-                class="form-control" 
-                ng-model="actionCtrl.item.template.slug" 
-                ng-options="template.slug as template.name for template in actionCtrl.templates"
-                ng-init ="actionCtrl.updateVersionsAndType(actionCtrl.item.template)"
-                ng-change="actionCtrl.updateVersionsAndType(actionCtrl.item.template)">
-            <option value=""></option>
-        </select>
+        <div class="input-group appear">
+            <select class="form-control" 
+                    ng-model="actionCtrl.item.template.version" 
+                    ng-options="version as version for version in actionCtrl.templateVersions">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-danger" ng-click="actionCtrl.deleteAction()">
+                <span class="fa fa-trash"></span>
+                Delete
+            </a>
+        </div>
     </div>
-    <div class="input-group appear">
-        <select class="form-control" 
-                ng-model="actionCtrl.item.template.version" 
-                ng-options="version as version for version in actionCtrl.templateVersions">
-            <option value=""></option>
-        </select>
-    </div>
-    <div class="form-group">
-        <a class="btn btn-danger" ng-click="actionCtrl.deleteAction()">
-            <span class="fa fa-trash"></span>
-            Delete
-        </a>
-    </div>
-</div>
-<div class="query-builder no-link appear" ng-if="actionCtrl.item.template.slug">
-    <dl class="rules-group-container">
-        <dd class="rules-group-body">
-            <ul class="rules-list">
-                <li class="rule-container appear" >
-                    <div class="form-inline bottom-fix">
-                        <div class="input-group" >
-                            <div class="input-group-addon">
-                                <label >Language</label>
+    <div class="query-builder no-link appear" ng-if="actionCtrl.item.template.slug">
+        <dl class="rules-group-container">
+            <dd class="rules-group-body">
+                <ul class="rules-list">
+                    <li class="rule-container appear" >
+                        <div class="form-inline bottom-fix">
+                            <div class="input-group" >
+                                <div class="input-group-addon">
+                                    <label >Language</label>
+                                </div>
+                                <input type="text" 
+                                    class="form-control"
+                                    ng-model="actionCtrl.item.locale[0].point.query" required>
                             </div>
-                            <input type="text" 
-                                   class="form-control"
-                                   ng-model="actionCtrl.item.locale[0].point.query" required>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <label>Country</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <label>Country</label>
+                                </div>
+                                <input type="text" 
+                                    class="form-control"
+                                    ng-model="actionCtrl.item.locale[1].point.query" required>
                             </div>
-                            <input type="text" 
-                                   class="form-control"
-                                   ng-model="actionCtrl.item.locale[1].point.query" required>
-                        </div>
-                        <div class="input-group" >
-                            <div class="input-group-addon">
-                                <label for="action_{{$index}}_defaultLocale">DEFAULT LOCALE</label>
-                            </div>
-                            <div class="languages">
-                                <div class="languages" 
-                                     uib-dropdown auto-close="outsideClick" 
-                                     is-open="actionCtrl.languageSelect.isOpen"
-                                     toggle-action="showNewLanguages = !showNewLanguages;"
-                                     >
-                                    <a href id="available-languages" 
-                                       class="selected-language" uib-dropdown-toggle>
-                                        {{actionCtrl.item.defaultLocale}}
-                                    </a>
+                            <div class="input-group" >
+                                <div class="input-group-addon">
+                                    <label for="action_{{$index}}_defaultLocale">DEFAULT LOCALE</label>
+                                </div>
+                                <div class="languages">
+                                    <div class="languages" 
+                                        uib-dropdown auto-close="outsideClick" 
+                                        is-open="actionCtrl.languageSelect.isOpen"
+                                        toggle-action="showNewLanguages = !showNewLanguages;"
+                                        >
+                                        <a href id="available-languages" 
+                                        class="selected-language" uib-dropdown-toggle>
+                                            {{actionCtrl.item.defaultLocale}}
+                                        </a>
 
-                                    <div class="list large" uib-dropdown-menu>
-                                        <div class="filter">
-                                            <span class="fa fa-search close" ng-if="!actionCtrl.languageSelect.key"></span>
-                                            <span class="fa fa-close close" ng-click="actionCtrl.clear($event)" ng-if="actionCtrl.languageSelect.key"></span>
-                                            <input type="text" class="form-control" id="key" name="key" ng-model="actionCtrl.languageSelect.key">
-                                        </div>
-                                        <div ng-if="actionCtrl.languageSelect.key && result.length <= 0" class="no-results">
-                                            No results found for: {{actionCtrl.languageSelect.key}}
-                                        </div>
-                                        <div ng-scrollbars ng-scrollbars-config="scrollbarsConfig">
-                                            <div class="item" 
-                                                ng-repeat="language in actionCtrl.languages | filter: actionCtrl.languageSelect.key as result"
-                                                ng-click="actionCtrl.setLanguage(language.language, actionCtrl.item, actionCtrl.languageSelect.isOpen)">
-                                                <a>{{language.country}}: {{language.language}}</a>
+                                        <div class="list large" uib-dropdown-menu>
+                                            <div class="filter">
+                                                <span class="fa fa-search close" ng-if="!actionCtrl.languageSelect.key"></span>
+                                                <span class="fa fa-close close" ng-click="actionCtrl.clear($event)" ng-if="actionCtrl.languageSelect.key"></span>
+                                                <input type="text" class="form-control" id="key" name="key" ng-model="actionCtrl.languageSelect.key">
+                                            </div>
+                                            <div ng-if="actionCtrl.languageSelect.key && result.length <= 0" class="no-results">
+                                                No results found for: {{actionCtrl.languageSelect.key}}
+                                            </div>
+                                            <div ng-scrollbars ng-scrollbars-config="scrollbarsConfig">
+                                                <div class="item" 
+                                                    ng-repeat="language in actionCtrl.languages | filter: actionCtrl.languageSelect.key as result"
+                                                    ng-click="actionCtrl.setLanguage(language.language, actionCtrl.item, actionCtrl.languageSelect.isOpen)">
+                                                    <a>{{language.country}}: {{language.language}}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="rule-container" >
-                    <div class="rule-value-container" ng-repeat="(key, val) in actionCtrl.recipients">
-                        <span class="title">
-                           {{key }}
-                        </span>
-                        <div class="form-inline bottom-fix">
-                            <div class="input-group" >
-                                <div class="input-group-addon">
-                                    <label>Source</label>
-                                </div>
-                                <select class="form-control"
-                                    ng-model="val.source" 
-                                    ng-options="item as item for item in ['JMS','CAR']"
-                                   >
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="input-group" ng-if="val.source == 'CAR'" >
-                                <div class="input-group-addon">
-                                    <label >Outlet ID xpath</label>
-                                </div>
-                                <input type="text"
-                                    class="form-control" ng-model="val['outlet']" >
-                            </div>
-                            <div class="input-group grow">
-                                <div class="input-group-addon">
-                                    <label >Xpath</label>
-                                </div>
-                                <input type="text" class="form-control" 
-                                    class="form-control" ng-model="val.point.query" >
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <label> Type</label>
-                                </div>
-                                <select class="form-control"
-                                    ng-model="val.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
+                    </li>
+                    <li class="rule-container" >
+                        <div class="rule-value-container" ng-repeat="(key, val) in actionCtrl.recipients">
+                            <span class="title">
+                            {{key }}
+                            </span>
+                            <div class="form-inline bottom-fix">
+                                <div class="input-group" >
+                                    <div class="input-group-addon">
+                                        <label>Source</label>
+                                    </div>
+                                    <select class="form-control"
+                                        ng-model="val.source" 
+                                        ng-options="item as item for item in ['JMS','CAR']"
                                     >
-                                    <option></option>
-                                </select>
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="input-group" ng-if="val.source == 'CAR'" >
+                                    <div class="input-group-addon">
+                                        <label >Outlet ID xpath</label>
+                                    </div>
+                                    <input type="text"
+                                        class="form-control" ng-model="val['outlet']" >
+                                </div>
+                                <div class="input-group grow">
+                                    <div class="input-group-addon">
+                                        <label >Xpath</label>
+                                    </div>
+                                    <input type="text" class="form-control" 
+                                        class="form-control" ng-model="val.point.query" >
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <label> Type</label>
+                                    </div>
+                                    <select class="form-control"
+                                        ng-model="val.point.value" ng-options="value as value for value in ['STRING_VALUE', 'STRING_LIST']"
+                                        >
+                                        <option></option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="rule-container appear" ng-hide="actionCtrl.item.type == 'SMS'">
-                    <span class="title block">Attachments</span>
-                    <button type="button"  class="btn btn-primary" >
-                        <i class="fa fa-plus"></i> Add attachments </button>
-                    <dl class="rules-group-container">
-                        <dd class="rules-group-body">
-                            <ul class="rules-list">
-                                <documents ng-repeat="document in actionCtrl.item.attachments track by $index" 
-                                    on-document-remove="actionCtrl.removeDocument($index)"
-                                    document="document"
-                                    files="actionCtrl.files" 
-                                    documents="actionCtrl.documents" 
-                                    object="item"></documents>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="rule-container appear">
-                    <div class="query-builder form-inline">
-                        <div class="fill">
-                            <span class="title block">Conditions</span>
-                            <conditions model="actionCtrl.item.trigger" ></conditions>
+                    </li>
+                    <li class="rule-container appear" ng-hide="actionCtrl.item.type == 'SMS'">
+                        <span class="title block">Attachments</span>
+                        <button type="button"  class="btn btn-primary" >
+                            <i class="fa fa-plus"></i> Add attachments </button>
+                        <dl class="rules-group-container">
+                            <dd class="rules-group-body">
+                                <ul class="rules-list">
+                                    <documents ng-repeat="document in actionCtrl.item.attachments track by $index" 
+                                        on-document-remove="actionCtrl.removeDocument($index)"
+                                        document="document"
+                                        files="actionCtrl.files" 
+                                        documents="actionCtrl.documents" 
+                                        object="item"></documents>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="rule-container appear">
+                        <div class="query-builder form-inline">
+                            <div class="fill">
+                                <span class="title block">Conditions</span>
+                                <conditions model="actionCtrl.item.trigger" ></conditions>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </dd>
-    </dl>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
 </div>

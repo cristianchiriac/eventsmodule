@@ -1,6 +1,10 @@
 <div class="row">
-    {{eventsController}}
      <event ng-repeat="event in eventsController.events"
                     item="event"
                     class="col-md-4 pt-3"/>
+    <!-- <ul>
+        <li ng-repeat="event in eventsContrller.events">
+            {{event | json}}
+        </li>
+    </ul> -->
 </div>

@@ -1,16 +1,17 @@
 eventsModule
     .controller('eventsController', function ($scope, eventsListObject) {
-        this.$onInit = function () {
-            getEvents();
+        this.$onInit =  () =>{
+            this.getEvents();
+            console.log(3)
         }
 
-        getEvents = () => {
-            console.log(1)
+        this.getEvents = () => {
             eventsListObject.getList()
                 .then(response => {
-                    console.log(2, this)
-                    this.events = response
+                    let r = response
+                    this.events = r;
                 })
+
         }
 
     });

@@ -1,6 +1,8 @@
 <div class="well bottom-fix">
     <h4>Metadata</h4>
-    <a class="btn btn-primary new"><span class="glyphicon glyphicon-plus"></span> Add new metadata</a>
+    <a class="btn btn-primary new" ng-click="metadataCtrl.addNewMetadata()">
+        <span class="fas fa-plus fa-xs"></span> Add new metadata
+    </a>
     <div class="query-builder">
         <dl class="rules-group-container">
             <dd class="rules-group-body">
@@ -12,22 +14,18 @@
                                     <div class="input-group-addon">
                                         <label>Source</label>
                                     </div>
-                                    <select class="form-control"
-                                            ng-model="item.source"
-                                            ng-options="item as item for item in ['JMS','CAR']"
-                                            required>
+                                    <select class="form-control" ng-model="item.source" ng-options="item as item for item in ['JMS','CAR']"
+                                        required>
                                     </select>
                                 </div>
                                 <div class="input-group" ng-if="item.source == 'CAR'">
                                     <div class="input-group-addon">
                                         <label>Outlet Xpath</label>
                                     </div>
-                                    <input type="text"
-                                           class="form-control">
+                                    <input type="text" class="form-control">
                                 </div>
                                 <div class="input-group">
-                                    <a class="btn btn-danger"
-                                        ng-click="metadataCtrl.removeMetadata($index, metadataCtrl.metadata)">
+                                    <a class="btn btn-danger" ng-click="metadataCtrl.removeMetadata($index, metadataCtrl.metadata)">
                                         <span class="fa fa-trash"></span>
                                         Delete
                                     </a>
@@ -35,27 +33,29 @@
                             </div>
                         </div>
                         <ul class="rules-list">
-                            <li class="rule-container" ng-repeat="(key,value) in item.points">
+
+                            <li class="rule-container" ng-repeat="item in item.points">
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name" ng-model="key">
+                                        <input type="text" class="form-control" placeholder="Name" ng-model="item.name">
                                     </div>
                                     <div class="form-group grow">
-                                        <input type="text" class="form-control" placeholder="Xpath" ng-model="value.query">
+                                        <input type="text" class="form-control" placeholder="Xpath" ng-model="item.query">
                                     </div>
                                     <div class="btn-group pull-right rule-actions">
-                                        <a class="btn btn-xs btn-success" ng-if="$last">
+                                        <a class="btn btn-xs btn-success" ng-click="metadataCtrl.addNewMetadataRule(item.points)" ng-if="$last" >
                                                 <i class="fas fa-plus fa-xs"></i>  Add data
                                         </a>
-                                        <a class="btn btn-danger"
-                                            ng-click="metadataCtrl.removeMetadataItem(key, item.points)">
-                                        
-                                            <i class="fa fa-trash fa-xs"></i>  Delete
+                                        <a class="btn btn-danger" ng-click="metadataCtrl.removeMetadataItem(key, item.points)">
+
+                                            <i class="fa fa-trash fa-xs"></i> Delete
                                         </a>
                                     </div>
                                 </div>
                             </li>
+
                         </ul>
+
                     </li>
                 </ul>
             </dd>
