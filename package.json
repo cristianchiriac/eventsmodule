@@ -8,14 +8,18 @@
   },
   "author": "CristianChiriac",
   "license": "ISC",
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1 ./"
+  },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "angular-ui-bootstrap": "^1.0",
     "ng-scrollbars": "0.0.11",
-    "spectrum-colorpicker": "^1.8.0"
+    "spectrum-colorpicker": "^1.8.0",
     "font-awesome": "*"
   },
   "devDependencies": {
+    "http-server": "^0.11.1",
     "node-sass": "^4.10.0"
   }
 }

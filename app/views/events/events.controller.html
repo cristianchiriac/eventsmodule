@@ -1,5 +1,6 @@
 <div class="row">
-     <event ng-repeat="item in eventsController.list"
-                    item="item"
+    {{eventsController}}
+     <event ng-repeat="event in eventsController.events"
+                    item="event"
                     class="col-md-4 pt-3"/>
 </div>
