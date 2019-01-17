@@ -1,6 +1,9 @@
 <div class="well context">
     <h4>Data</h4>
-    <a class="btn btn-primary new"><span class="glyphicon glyphicon-plus"></span> Add new context</a>
+    <a class="btn btn-primary new"
+        ng-click = "dataMappingCtrl.addContext()">
+        <span class="fas fa-plus fa-xs"></span> 
+        Add new context</a>
     <div class="query-builder">
         <dl class="rules-group-container">
             <dd class="rules-group-body">
@@ -12,14 +15,17 @@
                                     <div class="input-group-addon">
                                         <label>Source</label>
                                     </div>
-                                    <select class="form-control" name="" ng-model="source.source" ng-options="item as item for item in ['JMS','CAR']"
+                                    <select class="form-control" name="" 
+                                        ng-model="item.source" 
+                                        ng-options="item as item for item in ['JMS','CAR']"
                                         required>
                                     </select>
                                 </div>
-                                <div class="input-group" ng-if="source.source == 'CAR'">
+                                <div class="input-group" ng-if="item.source == 'CAR'">
                                     <div class="input-group-addon">
                                         <label for="">Outlet Xpath</label>
                                     </div>
+                                    <input type="text" class="form-control" ng-model="item.outlet">
                                 </div>
                                 <div class="input-group">
                                     <a class="btn btn-danger"
@@ -30,9 +36,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary t-10" ng-show="source.points.length == 0" ng-if="source.source">
-                            <i class="glyphicon glyphicon-plus"></i> Add Data
-                        </a>
 
                         <mappingobject fields="item.points"></mappingobject>
 

@@ -39,7 +39,6 @@ eventsModule
             };
 
             this.getFileVersions = (selectedTemplate) => {
-                console.log(66, this.object)
                 let existingFiles = this.files;
                 if (existingFiles) {
                     existingFiles.forEach((file) => {
@@ -51,12 +50,22 @@ eventsModule
             }              
 
             this.addNewDocument = () => {
-                console.log(66, this.object)
                 var attachment = {
                     type: 'URL'
                 };
                 this.object.attachments.push(attachment);
             }
+
+            this.addConditions = () => {
+                var newRuleGroup = {
+                    "condition": "",
+                    "rules": [
+                        {}
+                    ]
+                }
+                this.document.trigger = newRuleGroup
+            }
+
             this.deleteDocument = () => {
                 this.onDocumentRemove();
             }

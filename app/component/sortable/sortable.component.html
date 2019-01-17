@@ -1,0 +1,59 @@
+
+<div class="sorting">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Sort by:</h4> 
+            <ul class="used-items" dnd-list="sortableCtrl.sortby">
+                <li ng-if="!sortableCtrl.sortby || sortableCtrl.sortby.length <= 0">Add sortable fields here</li>
+                <li class="item" 
+                    ng-repeat="object in sortableCtrl.sortby" 
+                    ng-model="object.order" 
+                    dnd-draggable="object" 
+                    dnd-effect-allowed="all" 
+                    dnd-moved="sortableCtrl.sortby.splice($index, 1)" 
+                    dnd-selected="models.selected = object" 
+                    ng-class="{'selected': models.selected === object, 'draggable': sortableCtrl.sortBy.length > 0}">
+                    {{object.field}}
+                    <div class="actions">
+                        <a href="">
+                            <span class="fas icon" ng-class="{'fa-sort-amount-up': object.order ==='ASCENDING', 'fa-sort-amount-down': object.order === 'DESCENDING'}"
+                                ng-click="sortableCtrl.ascDescOrder(object)" 
+                                >
+                            </span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h4>Available items for sorting:</h4>
+            <ul class="unused-items" dnd-list="sortableCtrl.items">
+   
+                    <li ng-if="sortableCtrl.items.length <= 0">Remove sortable fields here</li>
+                    <li class="item draggable" 
+                        ng-repeat="object in sortableCtrl.items" 
+                        ng-show="object.field" 
+                        dnd-dragstart="checkDropzone(item)" 
+                        dnd-draggable="object" 
+                        dnd-moved="sortableCtrl.items.splice($index, 1)" 
+                        dnd-effect-allowed="all" 
+                        dnd-selected="models.selected = object"
+                        ng-class="{'selected': models.selected === object}">
+                        {{object.field}}
+                        <div class="actions">
+                            <span class="fa fa-arrows icon"></span>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- ng-show="object.field" 
+dnd-dragstart="checkDropzone(item)" 
+dnd-draggable="object" 
+dnd-moved="items.splice($index, 1)" 
+dnd-effect-allowed="all" 
+dnd-selected="models.selected = object"
+ng-class="{'selected': models.selected === object}" -->

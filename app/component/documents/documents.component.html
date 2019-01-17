@@ -1,72 +1,67 @@
-<li class="rule-container" >
+<li class="rule-container">
     <div class="form-inline">
-        <div class="input-group" >
+        <div class="input-group">
             <div class="input-group-addon">
                 <label>Type</label>
             </div>
             <select class="form-control" 
                 ng-change="documentsCtrl.checkDocumentValue($index)" 
-                ng-model="documentsCtrl.document.type" 
-                ng-options="item.value as item.name for item in documentsCtrl.documentSources" 
-                required>
+                ng-model="documentsCtrl.document.type"
+                ng-options="item.value as item.name for item in documentsCtrl.documentSources" required>
             </select>
         </div>
         <div ng-if="documentsCtrl.document.type == 'URL'" class="input-group grow">
-            <input class="form-control no-animation" ng-model="documentsCtrl.document.url" value="Enter utl" required/>
+            <input class="form-control no-animation" ng-model="documentsCtrl.document.url" value="Enter util" required />
         </div>
-        <div ng-if="documentsCtrl.document.type == 'TEMPLATE'" class="input-group grow" >
-            <select  empty-option="true" 
-                    class="form-control no-animation" 
-                    ng-model="documentsCtrl.document.template.slug" 
-                    ng-options="document.slug as document.name for document in documentsCtrl.documents"  
-                    ng-init = "documentsCtrl.getPdfVersions(documentsCtrl.document.template)"
-                    ng-change="documentsCtrl.getPdfVersions(documentsCtrl.document.template)" 
-                    required>
+        <div ng-if="documentsCtrl.document.type == 'TEMPLATE'" class="input-group grow">
+
+            <select empty-option="true" class="form-control no-animation" ng-model="documentsCtrl.document.template.slug"
+                ng-options="document.slug as document.name for document in documentsCtrl.documents" 
+                ng-change="documentsCtrl.getPdfVersions(documentsCtrl.document.template)"
+                ng-init="documentsCtrl.document.template && documentsCtrl.getPdfVersions(documentsCtrl.document.template) "
+                required>
                 <option value=""></option>
             </select>
         </div>
         <!--file select-->
-        <div ng-if="documentsCtrl.document.type == 'UPLOADED_FILE'" class="input-group grow" >
-            <select
-                    class="form-control no-animation"
-                    data-empty-option="true"
-                    data-ng-options="file.slug as file.name for file in documentsCtrl.files"
-                    data-ng-model="documentsCtrl.document.uploadedFile.slug"
-                    ng-init = "documentsCtrl.getFileVersions(documentsCtrl.document.uploadedFile)"
-                    data-ng-change="documentsCtrl.getFileVersions(documentsCtrl.document.uploadedFile)"
-                    required>
-                <option value=""></option>
-            </select>
-        </div>
-        
-        <!--version select-->
-        <div class="input-group" >
+        <div ng-if="documentsCtrl.document.type == 'UPLOADED_FILE'" class="input-group grow">
             <select class="form-control no-animation" 
-                    ng-model="documentsCtrl.document.template.version" 
-                    ng-options="version as version for version in documentsCtrl.pdfVersions" 
-                    ng-if="documentsCtrl.document.template.slug" 
-                    required>
+                data-empty-option="true" 
+                data-ng-options="file.slug as file.name for file in documentsCtrl.files"
+                data-ng-model="documentsCtrl.document.uploadedFile.slug" 
+                ng-init="documentsCtrl.document.uploadedFile.slug && documentsCtrl.getFileVersions(documentsCtrl.document.uploadedFile)"
+                data-ng-change="documentsCtrl.getFileVersions(documentsCtrl.document.uploadedFile)" required>
                 <option value=""></option>
             </select>
         </div>
-        <div class="input-group" >
-            <select
-                    class="form-control no-animation"
-                    data-empty-option="true"
-                    data-ng-options="version as version for version in documentsCtrl.fileVersions"
-                    data-ng-model="documentsCtrl.document.uploadedFile.version"
-                    data-ng-if="documentsCtrl.document.uploadedFile.slug"
-                    required>
+
+        <!--version select-->
+        <div class="input-group" ng-if="documentsCtrl.document.type == 'TEMPLATE'" >
+            <select class="form-control no-animation" 
+                ng-model="documentsCtrl.document.template.version" 
+                ng-options="version as version for version in documentsCtrl.pdfVersions"
+                ng-if="documentsCtrl.document.template.slug" required>
                 <option value=""></option>
             </select>
         </div>
+        <div class="input-group" ng-if="documentsCtrl.document.type == 'UPLOADED_FILE'">
+            <select class="form-control no-animation" 
+                data-empty-option="true" 
+                data-ng-options="version as version for version in documentsCtrl.fileVersions"
+                data-ng-model="documentsCtrl.document.uploadedFile.version" 
+                data-ng-if="documentsCtrl.document.uploadedFile.slug"
+                required>
+                <option value=""></option>
+            </select>
+        </div>
+       
         <div class="input-group">
-            <button type="button"  
-                    class="btn btn-success" 
-                    ng-click= "documentsCtrl.addNewDocument()"
-                    ng-show="documentsCtrl.object.attachments && documentsCtrl.object.attachments.length >= 1 && $last">
-                        <i class="glyphicon glyphicon-plus"></i> 
-                        Add attachments 
+            <button type="button" 
+                class="btn btn-success" 
+                ng-click="documentsCtrl.addNewDocument()" 
+                ng-show="documentsCtrl.object.attachments && documentsCtrl.object.attachments.length >= 1 && $last">
+                <i class="glyphicon glyphicon-plus"></i>
+                Add attachments
             </button>
         </div>
         <div class="input-group">
@@ -74,4 +69,10 @@
                 <span class="fa fa-trash"></span> Delete </button>
         </div>
     </div>
+    <div class="query-builder form-inline">
+            <div class="fill">
+                <span class="title block">Conditions</span>
+                <conditions model="documentsCtrl.document.trigger"></conditions>
+            </div>
+        </div>
 </li>

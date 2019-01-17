@@ -8,20 +8,12 @@ eventsModule
 
             this.$onInit = () => {
                 this.removeMetadata = (index, list) => {
+                    if (!list) list = []
                     list.splice(index, 1)
                 }
 
-                this.removeMetadataItem = (propName, obj) => {
-                    delete obj[propName]
-                }
-
                 this.addNewMetadata = () => {
-                    let newMetadata = {
-                        "source": "",
-                        "points": {
-
-                        }
-                    }
+                    let newMetadata = { "points": []}
                     this.metadata.unshift(newMetadata)
                 }
 
@@ -32,7 +24,7 @@ eventsModule
                         "query": ""
                     }
 
-                    this.pointd.unshift(newRule)
+                    points.unshift(newRule)
                     
                 }
 

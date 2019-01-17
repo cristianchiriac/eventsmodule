@@ -1,15 +1,19 @@
 eventsModule
-    .component('mappingobject',{
-        bindings:{
-            fields:'<'
+    .component('mappingobject', {
+        bindings: {
+            fields: '<'
         },
         templateUrl: 'app/component/mapping-object/mappingobject.component.html',
-        controller: function() {
+        controller: function () {
             this.$onInit = () => {
-                this.removeMappingObject =(key) =>{
-                    delete this.fields[key]
+                this.removeMappingObject = (index) => {
+                    this.fields.splice(index, 1)
                 }
+            }
+            
+            this.addNewData = (list) => {
+                list.push({});
             }
         },
         controllerAs: 'mappingCtrl'
-    } )
+    })

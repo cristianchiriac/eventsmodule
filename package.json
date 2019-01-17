@@ -4,19 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass app/assets/scss/style.scss css/style.css -w"
+    "start": "http-server -a localhost -p 8000 -c-1 ./"
   },
   "author": "CristianChiriac",
   "license": "ISC",
-  "scripts": {
-    "start": "http-server -a localhost -p 8000 -c-1 ./"
-  },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "angular-ui-bootstrap": "^1.0",
     "ng-scrollbars": "0.0.11",
     "spectrum-colorpicker": "^1.8.0",
-    "font-awesome": "*"
+    "font-awesome": "*",
+    "angular-drag-and-drop-lists": "*"
   },
   "devDependencies": {
     "http-server": "^0.11.1",

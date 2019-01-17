@@ -10,7 +10,7 @@
                     <div class="rule-actions">
 
                         <a class="btn btn-primary new"
-                            ng-click ="notificationIdCtrl.addEmptyRule()">
+                            ng-click ="notificationIdCtrl.addEmptyRule(notificationIdCtrl.key)">
                             <span class="fas fa-plus fa-xs"></span> Add data
                         </a>
                     </div>
@@ -22,7 +22,7 @@
                     <ul class="rules-list">
                         <li class="rule-container" ng-repeat="source in notificationIdCtrl.key">
                             <div class="btn-group pull-right rule-actions">
-                                <a class="btn btn-xs btn-danger" ng-click=notificationIdCtrl.remove($index)>
+                                <a class="btn btn-xs btn-danger" ng-click = "notificationIdCtrl.remove($index)">
                                     <span class="fa fa-trash fa-xs"></span> Delete
                                 </a>
                             </div>

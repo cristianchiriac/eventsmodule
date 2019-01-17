@@ -9,6 +9,12 @@ eventsModule
                 this.removeMapping = (index) => {
                     this.context.splice(index,1)
                 }
+                this.addContext = () => {
+                    this.context.unshift(
+                        {
+                            "points": []
+                        })
+                }
             }            
 
         },

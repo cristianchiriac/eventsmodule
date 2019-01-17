@@ -7,11 +7,12 @@ eventsModule
         controller: function () {
 
             this.$onInit = () => {
+                
                 this.remove = (index) => {
                     this.key.splice(index, 1)
                 }
 
-                this.addEmptyRule = () => {
+                this.addEmptyRule = (list) => {
                     let newKey ={
                         "source": "JMS",
                         "point": {
@@ -19,7 +20,7 @@ eventsModule
                             "query": ""
                         }
                     }
-                    this.key.unshift(newKey)
+                    list.unshift(newKey)
                 }
             }
 

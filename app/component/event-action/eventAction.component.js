@@ -8,9 +8,9 @@ eventsModule
             onActionRemove: '&'
         },
         templateUrl: "app/component/event-action/event-action.component.html",
-        
+
         controller: function ($scope, countries) {
-          
+
             this.languages = countries
 
             this.languageSelect = {
@@ -42,12 +42,24 @@ eventsModule
                     });
                 }
             }
-            
+
             this.deleteAction = () => {
                 this.onActionRemove();
             }
+
+            this.addAttachment = () => {
+                let newAttachment = {}
+                this.item.attachments.unshift(newAttachment)
+            }
+
             this.removeDocument = (index) => {
-                this.item.attachments.splice(index,1);
+                this.item.attachments.splice(index, 1);
+            }
+
+            this.setLanguage = (language, item) => {
+                item.defaultLocale = language;
+                this.languageSelect.isOpen = false;
+                this.languageSelect.key = '';
             }
 
             this.$onInit = () => {
@@ -58,7 +70,7 @@ eventsModule
                 }
             }
 
-        
+
 
         },
         controllerAs: "actionCtrl"

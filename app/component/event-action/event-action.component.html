@@ -8,7 +8,7 @@
                     class="form-control" 
                     ng-model="actionCtrl.item.template.slug" 
                     ng-options="template.slug as template.name for template in actionCtrl.templates"
-                    ng-init ="actionCtrl.updateVersionsAndType(actionCtrl.item.template)"
+                    ng-init ="actionCtrl.item.template && actionCtrl.updateVersionsAndType(actionCtrl.item.template)"
                     ng-change="actionCtrl.updateVersionsAndType(actionCtrl.item.template)">
                 <option value=""></option>
             </select>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="input-group" >
                                 <div class="input-group-addon">
-                                    <label for="action_{{$index}}_defaultLocale">DEFAULT LOCALE</label>
+                                    <label>DEFAULT LOCALE</label>
                                 </div>
                                 <div class="languages">
                                     <div class="languages" 
@@ -76,7 +76,7 @@
                                             <div ng-scrollbars ng-scrollbars-config="scrollbarsConfig">
                                                 <div class="item" 
                                                     ng-repeat="language in actionCtrl.languages | filter: actionCtrl.languageSelect.key as result"
-                                                    ng-click="actionCtrl.setLanguage(language.language, actionCtrl.item, actionCtrl.languageSelect.isOpen)">
+                                                    ng-click="actionCtrl.setLanguage(language.language, actionCtrl.item)">
                                                     <a>{{language.country}}: {{language.language}}</a>
                                                 </div>
                                             </div>
@@ -132,8 +132,11 @@
                     </li>
                     <li class="rule-container appear" ng-hide="actionCtrl.item.type == 'SMS'">
                         <span class="title block">Attachments</span>
-                        <button type="button"  class="btn btn-primary" >
-                            <i class="fa fa-plus"></i> Add attachments </button>
+                        <button type="button"  
+                            class="btn btn-primary" 
+                            ng-click="actionCtrl.addAttachment()">
+                            <i class="fa fa-plus"></i> Add attachments 
+                        </button>
                         <dl class="rules-group-container">
                             <dd class="rules-group-body">
                                 <ul class="rules-list">
@@ -151,7 +154,7 @@
                         <div class="query-builder form-inline">
                             <div class="fill">
                                 <span class="title block">Conditions</span>
-                                <conditions model="actionCtrl.item.trigger" ></conditions>
+                                <conditions ng-if = "actionCtrl.item.trigger" model="actionCtrl.item.trigger" ></conditions>
                             </div>
                         </div>
                     </li>

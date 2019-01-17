@@ -1,4 +1,9 @@
 <ul class="rules-list">
+        <a class="btn btn-primary t-10" 
+            ng-show="mappingCtrl.fields.length <=0 " 
+            ng-click = "mappingCtrl.addNewData(mappingCtrl.fields)">
+            <i class="glyphicon glyphicon-plus"></i> Add Data
+        </a>
     <li class="rule-container" ng-repeat="item in mappingCtrl.fields">
         <div class="form-inline">
             <div class="form-group">
@@ -12,15 +17,22 @@
                     ng-model="item.value"></select>
             </div>
             <div class="btn-group pull-right rule-actions">
-                <a class="btn btn-xs btn-success" ng-if="$last"><i class="glyphicon glyphicon-plus"></i>
-                    Add data</a>
-                <a class="btn btn-danger"
-                    ng-click="mappingCtrl.removeMappingObject(key)"
-                >Delete</a>
+                <a class="btn btn-danger " ng-click="mappingCtrl.removeMappingObject($index)">
+                    <span class="fa fa-trash"></span>
+                </a>
+                <a class="btn btn-xs btn-success" 
+                    ng-click = "mappingCtrl.addNewData(mappingCtrl.fields)"
+                    ng-if="$last">
+                    <span class="fas fa-plus fa-xs"></span> 
+                    Add 
+                </a>
+ 
             </div>
             <div class="pt-2" ng-if="item.value === 'OBJECT_LIST'">
                 <mappingobject fields="item.fields"></mappingobject>
-
-        </div>
+                <div ng-if ="item.sort"> 
+                   <sortable sortby = "item.sort" fields="item.fields" ></sortable>
+                </div>
+            </div>
     </li>
 </ul>

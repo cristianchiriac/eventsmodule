@@ -4,7 +4,7 @@ eventsModule
         this.getTemplates = function () {
             return new Promise(resolve => {
                 let templates =
-                    [{ "slug": "return-credit-note", "name": "Return Credit Note", "versions": [17, 18, 19, 28, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30] }, { "slug": "cancellation-by-mse", "name": "Cancellation By MSE", "versions": [7, 19, 20, 21, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 26, 31, 32, 33, 37, 34, 35, 36, 39, 40, 38, 41] }, { "slug": "release-date-changed", "name": "Release Date Changed", "versions": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }, { "slug": "delivery-split", "name": "Delivery Split", "versions": [5, 6, 7, 8, 9, 10, 11, 14, 12] }, { "slug": "pickup-second-reminder", "name": "Pickup Second Reminder", "versions": [9, 10, 13, 14, 15, 16, 17, 23, 20] }, { "slug": "asdasd", "name": "asdasd", "versions": [1, 2, 3, 8] }, { "slug": "cancellation-internal", "name": "Cancellation Internal", "versions": [5, 12, 13, 6, 7, 8, 9, 10, 11, 18, 19, 24, 20, 21, 22, 23, 27, 29, 26] }, { "slug": "replacement-shipment-confirmation", "name": "Replacement Shipment Confirmation", "versions": [9, 11, 13, 12] }, { "slug": "store-employee-message", "name": "Store Employee Message", "versions": [12, 13, 17, 18, 19, 20, 21, 22, 27, 28, 23, 24, 25, 26, 32, 30, 33, 39, 34, 35, 36, 37, 38, 42] }, { "slug": "invoice", "name": "Invoice", "versions": [3, 4, 5, 6, 7] }, { "slug": "confirm-shipment", "name": "Confirm Shipment", "versions": [1, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21] }, { "slug": "low-price-goodwill", "name": "Low Price Goodwill", "versions": [5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 18, 17] }, { "slug": "reminder-advanced-return", "name": "Reminder Advanced Return", "versions": [4, 5] }, { "slug": "pickup-first-reminder", "name": "Pickup First Reminder", "versions": [2, 4, 5, 6, 7, 8, 9, 10, 11] }, { "slug": "invoice-aroma-copy", "name": "Invoice Aroma Copy", "versions": [1, 2, 3, 4, 5] }, { "slug": "template-designer", "name": "Template designer", "versions": [1] }, { "slug": "replacement-request", "name": "Replacement Request", "versions": [3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }, { "slug": "alex", "name": "alex", "versions": [1, 2] }, { "slug": "order-confirmation", "name": "Order Confirmation", "versions": [13, 22, 23, 28, 29, 31, 33, 34, 36, 37, 38, 39, 40, 41, 45, 49, 50, 51, 52, 53, 56, 58, 59, 60, 61, 62, 64, 65, 66, 67, 80, 81, 82, 83, 84, 70, 72, 74, 75, 76, 77, 79, 69, 86, 89, 90, 91, 96, 92, 93, 95, 97, 104, 98, 100, 102, 103] }, { "slug": "ready-for-pickup", "name": "Ready For Pickup", "versions": [2, 3, 4, 5, 6, 8, 9] }, { "slug": "cancellation-by-customer", "name": "Cancellation By Customer", "versions": [14, 15, 26, 27, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28, 29, 35, 37, 38, 48, 42, 43, 44, 45, 46, 47, 41, 50, 51, 52, 53, 49] }, { "slug": "return-with-replacement", "name": "Return With Replacement", "versions": [2, 7, 3, 4, 6, 8, 9, 10] }, { "slug": "cosmin-test", "name": "Cosmin test", "versions": [2, 3, 4] }]
+                    [{ "slug": "return-credit-note", "name": "Return Credit Note", "versions": [17, 18, 19, 28, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34] }, { "slug": "cancellation-by-mse", "name": "Cancellation By MSE", "versions": [7, 19, 20, 21, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 26, 31, 32, 33, 37, 34, 35, 36, 39, 40, 38, 41] }, { "slug": "release-date-changed", "name": "Release Date Changed", "versions": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }, { "slug": "delivery-split", "name": "Delivery Split", "versions": [5, 6, 7, 8, 9, 10, 11, 14, 12] }, { "slug": "pickup-second-reminder", "name": "Pickup Second Reminder", "versions": [9, 10, 13, 14, 15, 16, 17, 23, 20] }, { "slug": "asdasd", "name": "asdasd", "versions": [1, 2, 3, 8] }, { "slug": "cancellation-internal", "name": "Cancellation Internal", "versions": [5, 12, 13, 6, 7, 8, 9, 10, 11, 18, 19, 24, 20, 21, 22, 23, 27, 29, 26] }, { "slug": "replacement-shipment-confirmation", "name": "Replacement Shipment Confirmation", "versions": [9, 11, 13, 12, 33] }, { "slug": "store-employee-message", "name": "Store Employee Message", "versions": [12, 13, 17, 18, 19, 20, 21, 22, 27, 28, 23, 24, 25, 26, 32, 30, 33, 39, 34, 35, 36, 37, 38, 42] }, { "slug": "invoice", "name": "Invoice", "versions": [3, 4, 5, 6, 7, 8, 26] }, { "slug": "confirm-shipment", "name": "Confirm Shipment", "versions": [1, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 32, 33, 35] }, { "slug": "low-price-goodwill", "name": "Low Price Goodwill", "versions": [5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 18, 17] }, { "slug": "reminder-advanced-return", "name": "Reminder Advanced Return", "versions": [4, 5] }, { "slug": "pickup-first-reminder", "name": "Pickup First Reminder", "versions": [2, 4, 5, 6, 7, 8, 9, 10, 11] }, { "slug": "invoice-aroma-copy", "name": "Invoice Aroma Copy", "versions": [1, 2, 3, 4, 5] }, { "slug": "template-designer", "name": "Template designer", "versions": [1] }, { "slug": "replacement-request", "name": "Replacement Request", "versions": [3, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }, { "slug": "alex", "name": "alex", "versions": [1, 2] }, { "slug": "order-confirmation", "name": "Order Confirmation", "versions": [13, 22, 23, 28, 29, 31, 33, 34, 36, 37, 38, 39, 40, 41, 45, 49, 50, 51, 52, 53, 56, 58, 59, 60, 61, 62, 64, 65, 66, 67, 80, 81, 82, 83, 84, 70, 72, 74, 75, 76, 77, 79, 69, 86, 89, 90, 91, 96, 92, 93, 95, 97, 104, 98, 100, 102, 103] }, { "slug": "ready-for-pickup", "name": "Ready For Pickup", "versions": [2, 3, 4, 5, 6, 8, 9] }, { "slug": "cancellation-by-customer", "name": "Cancellation By Customer", "versions": [14, 15, 26, 27, 16, 17, 18, 19, 20, 21, 22, 23, 24, 28, 29, 35, 37, 38, 48, 42, 43, 44, 45, 46, 47, 41, 50, 51, 52, 53, 49] }, { "slug": "return-with-replacement", "name": "Return With Replacement", "versions": [2, 7, 3, 4, 6, 8, 9, 10] }, { "slug": "cosmin-test", "name": "Cosmin test", "versions": [2, 3, 4] }]
                 setTimeout(function () {
                     resolve(templates);
                 }, 0);
@@ -94,7 +94,47 @@ eventsModule
                     "attachments": [
                         {
                             "type": "TEMPLATE",
-                            "trigger": null,
+                            "trigger": 
+                            {
+                                "condition": "AND",
+                                "rules": [
+                                    {
+                                        "condition": "OR",
+                                        "rules": [
+                                            {
+                                                "xpath": "/NotificationMessage/payload/Shipments/Shipment/@LevelOfService",
+                                                "operator": "EQUAL",
+                                                "value": "MSH_PICKUP"
+                                            },
+                                            {
+                                                "xpath": "/NotificationMessage/payload/Shipments/Shipment/@LevelOfService",
+                                                "operator": "EQUAL",
+                                                "value": "MSH_SAMEDAY_DEL"
+                                            },
+                                            {
+                                                "xpath": "/NotificationMessage/payload/Shipments/Shipment/@LevelOfService",
+                                                "operator": "EQUAL",
+                                                "value": "MSH_SAMEDAY_PICKUP"
+                                            },
+                                            {
+                                                "xpath": "/NotificationMessage/payload/Shipments/Shipment/@LevelOfService",
+                                                "operator": "EQUAL",
+                                                "value": "MSH_WISHDAY_DEL"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "xpath": "/NotificationMessage/payload/Shipments/Shipment/ShipmentLines/ShipmentLine/OrderLine/Order/PaymentMethods/PaymentMethod/@PaymentType",
+                                        "operator": "NOT_EQUAL",
+                                        "value": "COP"
+                                    },
+                                    {
+                                        "xpath": "/NotificationMessage/payload/Shipments/Shipment/ShipmentLines/ShipmentLine/OrderLine/Order/PaymentMethods/PaymentMethod/@PaymentType",
+                                        "operator": "NOT_EQUAL",
+                                        "value": "PICKUP_FINANCING"
+                                    }
+                                ]
+                            },
                             "template": {
                                 "slug": "confirm-shipment-invoice",
                                 "version": 72

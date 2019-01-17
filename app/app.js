@@ -2,6 +2,7 @@ let eventsModule = angular
   .module('eventsModule',[
       'ui.router',
       'ui.bootstrap',
-      'ncy-angular-breadcrumb'
+      'ncy-angular-breadcrumb',
+      'dndLists'
       ])
 
