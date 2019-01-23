@@ -1,7 +1,7 @@
 <div class="query-builder form-inline">
     <div>
         <a class="btn btn-primary new"
-            ng-if= "!conditionCtrl.model.rules.length"
+            ng-if= "!conditionCtrl.model.rules || conditionCtrl.model.rules.length <=0"
             ng-click ="conditionCtrl.addNewRule()">
             <span class="fas fa-plus fa-xs"></span> Add rules
         </a>
