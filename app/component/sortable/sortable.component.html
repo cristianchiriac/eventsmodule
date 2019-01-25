@@ -1,5 +1,5 @@
 
-<div class="sorting">
+<div class="sorting" >
     <div class="row">
         <div class="col-md-6">
             <h4>Sort by:</h4> 
@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6">
             <h4>Available items for sorting:</h4>
-            <ul class="unused-items" dnd-list="sortableCtrl.items">
+            <ul class="unused-items" dnd-list="sortableCtrl.items || sortable.fields">
    
                     <li ng-if="sortableCtrl.items.length <= 0">Remove sortable fields here</li>
                     <li class="item draggable" 

@@ -10,12 +10,11 @@ eventsModule
             this.items = [];
 
             this.$onInit = () => {
-                console.log(111, this.sortby)
                 getFieldsNotSortedBy()
             }
 
             getFieldsNotSortedBy = () => {
-                if(this.sortby){
+                if(this.sortby.length >0){
                     for (var i = 0; i < this.fields.length; i++){
                         for (var j = 0; j < this.sortby.length; j++){
                             if(this.fields[i].name !== this.sortby[j].field){
@@ -27,7 +26,6 @@ eventsModule
                         }
                     }
                 } else {
-                    
                     for (var i = 0; i < this.fields.length; i++){
                         this.items.push({
                             field: this.fields[i].name,
@@ -35,7 +33,6 @@ eventsModule
                         })
                     }
                 }
-                console.log(this.items)
                 
             }
 
