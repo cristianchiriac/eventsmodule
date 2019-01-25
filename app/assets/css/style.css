@@ -15119,6 +15119,8 @@ a.btn, .gjs-layers .gjs-nv-item a#gjs-nv-btn-eye {
     color: #f86c6b; }
   .well .query-builder .rules-group-container {
     background: none; }
+    .well .query-builder .rules-group-container .extra-margin {
+      margin: 12px; }
     .well .query-builder .rules-group-container .rule-container.invalid {
       border-color: #f86c6b;
       background: rgba(248, 108, 107, 0.14); }

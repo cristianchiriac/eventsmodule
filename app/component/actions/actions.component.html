@@ -4,13 +4,13 @@
     </h4>
 
     <div class="builders actions">
-        <a class="btn btn-primary new" 
+        <a class="btn btn-primary" style="margin-bottom: 12px;" 
             ng-click="ctrlActions.addNewAction()">
             <span class="fas fa-plus fa-xs"></span> Add new action
         </a>
 
-        <div class="builder ng-scope " ng-repeat="item in ctrlActions.actions">
-            <event-action  item="item" 
+        <div class="builder ng-scope" ng-repeat="item in ctrlActions.actions">
+            <event-action item="item" 
                         templates = "ctrlActions.templates" 
                         documents = "ctrlActions.documents" 
                         files="ctrlActions.files"

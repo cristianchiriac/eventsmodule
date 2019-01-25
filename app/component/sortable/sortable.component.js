@@ -42,20 +42,6 @@ eventsModule
                 } else {
                     item.order = 'ASCENDING';
                 }            }
-
-            // for (var i = 0; i < list.length; i++)  {
-            //     if (list[i][listProperty] === object[objectProperty]) {
-            //         return true;
-            //     }
-            // }
-            // for (var i = 0; i < this.fields.length; i++) {
-            //     if (!generalServices.containsObject(scope.sortableList[i], scope.dropzone, 'name', 'field')) {
-            //         scope.sortableItems.push({
-            //             field: scope.sortableList[i].name,
-            //             order: 'ASCENDING'
-            //         });
-            //     }
-            // }
         },
         controllerAs: 'sortableCtrl'
     })

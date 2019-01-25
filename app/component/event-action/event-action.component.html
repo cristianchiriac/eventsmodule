@@ -130,16 +130,16 @@
                             </div>
                         </div>
                     </li>
-                    <li class="rule-container appear" ng-hide="actionCtrl.item.type == 'SMS'">
+                    <li class="rule-container appear " ng-hide="actionCtrl.item.type == 'SMS'">
                         <span class="title block">Attachments</span>
                         <button type="button"  
                             class="btn btn-primary" 
                             ng-click="actionCtrl.addAttachment()">
                             <i class="fa fa-plus"></i> Add attachments 
                         </button>
-                        <dl class="rules-group-container">
+                        <dl class="rules-group-container extra-margin">
                             <dd class="rules-group-body">
-                                <ul class="rules-list">
+                                <ul class="rules-list ml-0">
                                     <documents ng-repeat="document in actionCtrl.item.attachments track by $index" 
                                         on-document-remove="actionCtrl.removeDocument($index)"
                                         document="document"

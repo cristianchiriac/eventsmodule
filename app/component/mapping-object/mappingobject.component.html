@@ -1,5 +1,5 @@
 <ul class="rules-list">
-        <a class="btn btn-primary t-10" 
+        <a class="btn btn-primary " 
             ng-show="mappingCtrl.fields.length <=0 " 
             ng-click = "mappingCtrl.addNewData(mappingCtrl.fields)">
             <i class="glyphicon glyphicon-plus"></i> Add Data
@@ -20,7 +20,7 @@
                 <a class="btn btn-danger " ng-click="mappingCtrl.removeMappingObject($index)">
                     <span class="fa fa-trash"></span>
                 </a>
-                <a class="btn btn-xs btn-success" 
+                <a class="btn btn-xs btn-success ml-2" 
                     ng-click = "mappingCtrl.addNewData(mappingCtrl.fields)"
                     ng-if="$last">
                     <span class="fas fa-plus fa-xs"></span> 
@@ -28,7 +28,7 @@
                 </a>
  
             </div>
-            <div class="pt-2" ng-if="item.value === 'OBJECT_LIST'">
+            <div ng-if="item.value === 'OBJECT_LIST'">
                 <mappingobject fields="item.fields"></mappingobject>
                 <div ng-if ="item.sort"> 
                    <sortable sortby = "item.sort" fields="item.fields" ></sortable>

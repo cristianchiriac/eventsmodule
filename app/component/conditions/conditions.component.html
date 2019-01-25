@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="fill">
-        <dl class="rules-group-container">
+        <dl class="rules-group-container ">
             <dt class="rules-group-header">
                 <div class="btn-group group-conditions" 
                     ng-if="conditionCtrl.model.rules.length >= 1">
@@ -51,9 +51,9 @@
                 </div>
             </dt>
             <dd class="rules-group-body">
-                <ul class="rules-list">
+                <ul class="rules-list extra-margin">
                     <li class="rule-container" ng-repeat="item in conditionCtrl.model.rules" >
-                        <div class="pull-right rule-actions">  
+                        <div class="pull-right rule-actions m-1">  
                             <a class="btn btn-xs btn-danger" 
                                 ng-click="conditionCtrl.deleteCondition($index)" 
                                > 

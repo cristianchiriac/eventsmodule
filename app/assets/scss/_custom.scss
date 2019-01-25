@@ -1431,8 +1431,14 @@ a {
     .query-builder {
         .rules-group-container {
             background: none;
+            
+            .extra-margin {
+                margin: 12px;
+            }  
 
             .rule-container {
+
+
                 &.invalid {
                     border-color: $brand-danger;
                     background: rgba($brand-danger, 0.14);
